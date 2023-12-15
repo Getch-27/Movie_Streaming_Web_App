@@ -7,7 +7,7 @@ class Database {
     private $username = 'getch1';
     private $password = '123';
     public $conn;
-    
+
     // function to establish connection
     public function connect() {
         $this->conn = null;
@@ -27,3 +27,4 @@ class Database {
         return $this->conn;
     }
 }
+?>
