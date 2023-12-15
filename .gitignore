@@ -1,0 +1,7 @@
+# .gitignore
+
+# Ignore Node.js modules for the entire project
+node_modules/
+
+# Ignore environment files
+.env
