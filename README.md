@@ -13,7 +13,7 @@ A movie streaming web app built with React, PHP, and MySQL.
 ### Installation
 
    ```bash
-   git clone https://github.com/your-username/movie-streaming-app.git
+   git clone https://github.com/Getch-27/movie-streaming-app.git
    cd movie-streaming-app
    
    //for react app
