@@ -1,8 +1,9 @@
 <?php
-
 class Movie {
+
+ 
     private $conn;
-    private $table = 'movies';
+    private $table = 'movie';
 
     public $movie_id;
     public $title;
