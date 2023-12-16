@@ -7,8 +7,8 @@ class MovieController {
         $this->movie = new Movie($db);
     }
 
-    public function getMovieById($movieId) {
-        return $this->movie->getMovie($movieId);
+    public function getAllMovie() {
+        return $this->movie->getAllMovie();
     }
 }
 ?>
