@@ -1,5 +1,4 @@
 <?php
-
 class MovieController {
     private $movie;
 

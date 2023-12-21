@@ -50,7 +50,7 @@ class Movie
 
             default:
                 return ['message' => 'Invalid search mode'];
-                break;
+                
         }
         if ($this->search_mode === 'genre_name') {
             $query = "SELECT m.*,
@@ -91,7 +91,8 @@ class Movie
         $stmt->bindParam(':description', $data->description);
         $stmt->bindParam(':video_url', $data->video_url);
         $stmt->bindParam(':poster_url', $data->poster_url);
-        $stmt->execute();
+         
+        //excute the request
         if ($stmt->execute()) {
             $last_id = $this->conn->lastInsertId();
             // Remove spaces after commas and split the string into an array
