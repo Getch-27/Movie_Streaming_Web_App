@@ -27,6 +27,7 @@ class Movie
         // $stmt->bindParam(':movie_id', $this->movie_id);
         $stmt->execute();
         //->fetch(PDO::FETCH_ASSOC)
+        
         return $stmt;
     }
 
