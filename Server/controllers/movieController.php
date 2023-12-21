@@ -18,5 +18,14 @@ class MovieController {
             return ['message' => 'Invalid request'];
         }
     }
+    public function uploadMovie($data) {
+      if(isset($data->title)) {
+       return $this->movie->uploadMovie($data);
+      }else{
+        return ['message' => 'Invalid request'];
+      }
+
+    }
+    
 }
 ?>

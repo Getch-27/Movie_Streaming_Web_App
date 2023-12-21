@@ -77,4 +77,40 @@ class Movie
         //->fetch(PDO::FETCH_ASSOC)
         return $stmt;
     }
+    //function to upload a movie
+    public function uploadMovie($data){
+        $query = "INSERT INTO $this->table (title, rating, released_year, duration, description, video_url, poster_url) VALUES (:title, :rating, :released_year, :duration, :description, :video_url, :poster_url)";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':title', $data->title);
+        $stmt->bindParam(':rating', $data->rating);
+        $stmt->bindParam(':released_year', $data->released_year);
+        $stmt->bindParam(':duration', $data->duration);
+        $stmt->bindParam(':description', $data->description);
+        $stmt->bindParam(':video_url', $data->video_url);
+        $stmt->bindParam(':poster_url', $data->poster_url);
+        $stmt->execute();
+        if($stmt->execute()){
+            // $last_id = $this->conn->lastInsertId();
+            // // $query2 = "INSERT INTO movie_genres (movie_id, genre_id) VALUES (:movie_id, :genre_id)";
+            // // $stmt2 = $this->conn->prepare($query2);
+            // // $stmt2->bindParam(':movie_id', $last_id);
+            // // $stmt2->bindParam(':genre_id', 3);
+
+            // // "genre_names": "Action,Adventure,Animation"
+            // if($stmt2->execute()){
+            //     return true;
+            // }else{
+            //     return false;
+            // }
+            return true;
+
+            }else{
+            echo "Error: " . $stmt->error;
+            return false;
+          }
+			// "genre_names": "Action,Adventure,Animation"
+		
+       
+        
+    }
 }
