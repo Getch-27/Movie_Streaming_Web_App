@@ -5,6 +5,8 @@ class Movie
 
     private $conn;
     private $table = 'movie';
+    private $genre_table = 'genre';
+    private $genre_names_table = 'genre_names';
     private $search_mode;
     private $search_key;
 
@@ -27,7 +29,7 @@ class Movie
         // $stmt->bindParam(':movie_id', $this->movie_id);
         $stmt->execute();
         //->fetch(PDO::FETCH_ASSOC)
-        
+
         return $stmt;
     }
 
@@ -50,7 +52,7 @@ class Movie
                 return ['message' => 'Invalid search mode'];
                 break;
         }
-        if($this->search_mode === 'genre_name'){
+        if ($this->search_mode === 'genre_name') {
             $query = "SELECT m.*,
             GROUP_CONCAT(g.genre_name) AS genre_names
             FROM $this->table m 
@@ -58,7 +60,7 @@ class Movie
             LEFT JOIN genre g ON mg.genre_id = g.genre_id 
             WHERE g." . $this->search_mode . " = :search_key
             GROUP BY m.movie_id";
-        }else{
+        } else {
             $query = "SELECT m.*,
             GROUP_CONCAT(g.genre_name) AS genre_names
             FROM $this->table m 
@@ -67,7 +69,7 @@ class Movie
             WHERE m." . $this->search_mode . " = :search_key
             GROUP BY m.movie_id";
         }
-        
+
 
         $stmt = $this->conn->prepare($query);
         // Bind the parameter to prevent SQL injection
@@ -78,7 +80,8 @@ class Movie
         return $stmt;
     }
     //function to upload a movie
-    public function uploadMovie($data){
+    public function uploadMovie($data)
+    {
         $query = "INSERT INTO $this->table (title, rating, released_year, duration, description, video_url, poster_url) VALUES (:title, :rating, :released_year, :duration, :description, :video_url, :poster_url)";
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(':title', $data->title);
@@ -89,28 +92,40 @@ class Movie
         $stmt->bindParam(':video_url', $data->video_url);
         $stmt->bindParam(':poster_url', $data->poster_url);
         $stmt->execute();
-        if($stmt->execute()){
-            // $last_id = $this->conn->lastInsertId();
-            // // $query2 = "INSERT INTO movie_genres (movie_id, genre_id) VALUES (:movie_id, :genre_id)";
-            // // $stmt2 = $this->conn->prepare($query2);
-            // // $stmt2->bindParam(':movie_id', $last_id);
-            // // $stmt2->bindParam(':genre_id', 3);
+        if ($stmt->execute()) {
+            $last_id = $this->conn->lastInsertId();
+            // Remove spaces after commas and split the string into an array
+            $genreArray = explode(',', $data->genres);
+            
+            // Trim whitespace from each genre
+            $genreArray = array_map('trim', $genreArray);
+            
+            foreach ($genreArray as $genre) {
+                $sql = " SELECT *FROM " . $this->genre_table . " WHERE genre_name = '$genre'";
+                $stmtGenreId = $this->conn->prepare($sql);
+                $stmtGenreId->execute();
 
-            // // "genre_names": "Action,Adventure,Animation"
-            // if($stmt2->execute()){
-            //     return true;
-            // }else{
-            //     return false;
-            // }
+                $genreId = null;
+
+                if ($stmtGenreId->rowCount() > 0) {
+                    $genreId = $stmtGenreId->fetch(PDO::FETCH_ASSOC)['genre_id'];
+                }
+
+               // Insert into the 'movie_genres' table
+                $queryGenre = "INSERT INTO movie_genres (movie_id, genre_id) VALUES (:movie_id, :genre_id)";
+                $stmtGenre = $this->conn->prepare($queryGenre);
+                $stmtGenre->bindParam(':movie_id', $last_id);
+                $stmtGenre->bindParam(':genre_id', $genreId);
+
+                if (!$stmtGenre->execute()) {
+                    echo json_encode(["error" => "Error inseriong the genre"]);
+                    return false;
+                }
+            }
             return true;
-
-            }else{
+        } else {
             echo "Error: " . $stmt->error;
             return false;
-          }
-			// "genre_names": "Action,Adventure,Animation"
-		
-       
-        
+        }
     }
 }
