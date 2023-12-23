@@ -13,8 +13,6 @@ $data = json_decode(file_get_contents("php://input"));
 if ($data) {
     $database = new Database();
     $db = $database->connect();
-
-    $movie = new Movie($db);
     $movieController = new MovieController($db);
 
     $result = $movieController->searchMovies($data);
