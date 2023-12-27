@@ -10,18 +10,18 @@ include_once(__DIR__ . '../../../controllers/MovieController.php');
 $data = json_decode(file_get_contents("php://input"));
 
 
-if (isset($_POST['json_data']) && isset($_FILES) ) {
-    $data = $_POST['json_data'];
+if (isset($_POST['title']) && isset($_FILES) ) {
+    $data = $_POST;
     $database = new Database();
     $db = $database->connect();
     $movieController = new MovieController($db);
-     $movieController->uploadMovie($data , $_FILES);
+    $result= $movieController->uploadMovie($data , $_FILES);
      
-    // if ($result) {
-    //     echo json_encode(["message" => "Uploaded successfully"]);
-    // }else{
-    //     echo json_encode(["message" => "Failed to upload"]);
-    // }
+    if ($result) {
+        echo json_encode(["message" => "Uploaded successfully"]);
+    }else{
+        echo json_encode(["message" => "Failed to upload"]);
+    }
 }else{
     echo json_encode(["message" => "Invalid request"]);
 }
