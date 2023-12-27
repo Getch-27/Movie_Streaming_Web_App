@@ -10,7 +10,7 @@ include_once(__DIR__ . '../../../controllers/MovieController.php');
 $data = json_decode(file_get_contents("php://input"));
 
 
-if (isset($_POST['title']) && isset($_FILES) ) {
+if (isset($_POST['submit']) && isset($_FILES) ) {
     $data = $_POST;
     $database = new Database();
     $db = $database->connect();

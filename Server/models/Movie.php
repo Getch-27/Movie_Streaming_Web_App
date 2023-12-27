@@ -82,52 +82,56 @@ class Movie
     //function to upload a movie
     public function uploadMovie($data , $videoPath, $posterPath )
     {
-        $query = "INSERT INTO $this->table (title, rating, released_year, duration, description, video_url, poster_url) VALUES (:title, :rating, :released_year, :duration, :description, :video_url, :poster_url)";
-        // $stmt = $this->conn->prepare($query);
-        // $stmt->bindParam(':title', $data->title);
-        // $stmt->bindParam(':rating', $data->rating);
-        // $stmt->bindParam(':released_year', $data->released_year);
-        // $stmt->bindParam(':duration', $data->duration);
-        // $stmt->bindParam(':description', $data->description);
-        // $stmt->bindParam(':video_url', $videoPath);
-        // $stmt->bindParam(':poster_url', $posterPath);
-        echo $videoPath . " " . "  ";
-        echo print_r($data, true);
-        // //excute the request
-        // if ($stmt->execute()) {
-        //     $last_id = $this->conn->lastInsertId();
-        //     // Remove spaces after commas and split the string into an array
-        //     $genreArray = explode(',', $data->genres);
+
+        $query = "INSERT INTO $this->table (title, rating, released_year, duration, description, video_url, poster_url, trailer) VALUES (:title, :rating, :released_year, :duration, :description, :video_url, :poster_url,:trailer)";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':title', $data['title']);
+        $stmt->bindParam(':rating', $data['rating']);
+        $stmt->bindParam(':released_year', $data['released_year']);
+        $stmt->bindParam(':duration', $data['duration']);
+        $stmt->bindParam(':description', $data['description']);
+        $stmt->bindParam(':trailer', $data['trailer']);
+        $stmt->bindParam(':video_url', $videoPath);
+        $stmt->bindParam(':poster_url', $posterPath);
+
+
+  
+        
+        //excute the request
+        if ($stmt->execute()) {
+            $last_id = $this->conn->lastInsertId();
+            // Remove spaces after commas and split the string into an array
+            $genreArray = $data['genres'];
+
+            // Trim whitespace from each genre
+            $genreArray = array_map('trim', $genreArray);
             
-        //     // Trim whitespace from each genre
-        //     $genreArray = array_map('trim', $genreArray);
-            
-        //     foreach ($genreArray as $genre) {
-        //         $sql = " SELECT *FROM " . $this->genre_table . " WHERE genre_name = '$genre'";
-        //         $stmtGenreId = $this->conn->prepare($sql);
-        //         $stmtGenreId->execute();
+            foreach ($genreArray as $genre) {
+                $sql = " SELECT *FROM " . $this->genre_table . " WHERE genre_name = '$genre'";
+                $stmtGenreId = $this->conn->prepare($sql);
+                $stmtGenreId->execute();
 
-        //         $genreId = null;
+                $genreId = null;
 
-        //         if ($stmtGenreId->rowCount() > 0) {
-        //             $genreId = $stmtGenreId->fetch(PDO::FETCH_ASSOC)['genre_id'];
-        //         }
+                if ($stmtGenreId->rowCount() > 0) {
+                    $genreId = $stmtGenreId->fetch(PDO::FETCH_ASSOC)['genre_id'];
+                }
 
-        //        // Insert into the 'movie_genres' table
-        //         $queryGenre = "INSERT INTO movie_genres (movie_id, genre_id) VALUES (:movie_id, :genre_id)";
-        //         $stmtGenre = $this->conn->prepare($queryGenre);
-        //         $stmtGenre->bindParam(':movie_id', $last_id);
-        //         $stmtGenre->bindParam(':genre_id', $genreId);
+               // Insert into the 'movie_genres' table
+                $queryGenre = "INSERT INTO movie_genres (movie_id, genre_id) VALUES (:movie_id, :genre_id)";
+                $stmtGenre = $this->conn->prepare($queryGenre);
+                $stmtGenre->bindParam(':movie_id', $last_id);
+                $stmtGenre->bindParam(':genre_id', $genreId);
 
-        //         if (!$stmtGenre->execute()) {
-        //             echo json_encode(["error" => "Error inseriong the genre"]);
-        //             return false;
-        //         }
-        //     }
-        //     return true;
-        // } else {
-        //     echo "Error: " . $stmt->error;
-        //     return false;
-        // }
+                if (!$stmtGenre->execute()) {
+                    echo json_encode(["error" => "Error inseriong the genre"]);
+                    return false;
+                }
+            }
+            return true;
+        } else {
+            echo "Error: " . $stmt->error;
+            return false;
+        }
     }
 }
