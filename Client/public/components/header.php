@@ -129,7 +129,7 @@ $menuItems = array(
                             <!-- if its genre array loop -->
                             <?php if ($item['text'] === 'Genre') : ?>
                                 <div class="dropdown">
-                                    <a href="#" class="dropbtn <?php echo ($currentPage == "genre.php") ? ' active ' : ''; ?>">Genre </a>
+                                    <a href="" class="dropbtn cursor-not-allowed <?php echo ($currentPage == "genre.php") ? ' active ' : ''; ?>">Genre </a>
                                     <div class="submenu dropdown-content">
                                         <?php if (isset($item['submenu'])) : ?>
                                             <div class=" bg-gray-300 h-56 w-56  mt-5 submenu dropdown-content rounded-lg shadow-lg">

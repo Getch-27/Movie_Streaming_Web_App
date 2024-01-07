@@ -9,7 +9,6 @@ include_once(__DIR__ . '../../../controllers/MovieController.php');
 
 $database = new Database();
 $db = $database->connect();
-
 $movieController = new MovieController($db);
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
