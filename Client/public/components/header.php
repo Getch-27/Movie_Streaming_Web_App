@@ -1,6 +1,9 @@
 <?php
 // Determine the current page
 $currentPage = basename($_SERVER['PHP_SELF']);
+if($currentPage == 'index.php') {
+    $currentPage = 'home.php';
+}
 // Define menu items
 $menuItems = array(
     array('text' => 'Home', 'url' => '../index.php'),
@@ -69,7 +72,7 @@ $menuItems = array(
         }
 
         .active {
-            color: #4caf50;
+            border-bottom: #4caf50 solid 3px;
 
 
             /* font-weight: bold; */
@@ -126,7 +129,7 @@ $menuItems = array(
                             <!-- if its genre array loop -->
                             <?php if ($item['text'] === 'Genre') : ?>
                                 <div class="dropdown">
-                                    <a href="#" class="dropbtn <?php echo ($currentPage == $item['url']) ? 'class="active"' : ''; ?>">Genre </a>
+                                    <a href="#" class="dropbtn <?php echo ($currentPage == "genre.php") ? ' active ' : ''; ?>">Genre </a>
                                     <div class="submenu dropdown-content">
                                         <?php if (isset($item['submenu'])) : ?>
                                             <div class=" bg-gray-300 h-56 w-56  mt-5 submenu dropdown-content rounded-lg shadow-lg">
@@ -140,7 +143,7 @@ $menuItems = array(
                                 </div>
                             <?php elseif ($item['text'] === 'Year') : ?>
                                 <div class="dropdown">
-                                    <a href="#" class="dropbtn <?php echo ($currentPage == $item['url']) ? 'class="active"' : ''; ?>">Year</a>
+                                    <a href="#" class="dropbtn <?php echo ($currentPage == $item['url']) ? 'active' : ''; ?>">Year</a>
                                     <div class="submenu dropdown-content">
                                         <?php if (isset($item['submenu'])) : ?>
                                             <div class=" bg-gray-300 h-56 w-56  mt-5 submenu dropdown-content rounded-lg shadow-lg">
@@ -153,7 +156,7 @@ $menuItems = array(
                                     </div>
                                 </div>
                             <?php else : ?>
-                                <a href="<?php echo $item['url']; ?>" <?php echo ($currentPage == $item['url']) ? 'class="active"' : ''; ?>>
+                                <a href="<?php echo $item['url']; ?>" <?php echo ($currentPage == strtolower($item['text'])) . "php"  ? 'class=" active"' : ''; ?>>
                                     <?php echo $item['text']; ?>
                                 </a>
                             <?php endif; ?>
@@ -176,7 +179,7 @@ $menuItems = array(
                     <!-- if its genre array loop -->
                     <?php if ($item['text'] === 'Genre') : ?>
                         <div class="dropdown">
-                            <a href="#" class="dropbtn <?php echo ($currentPage == $item['url']) ? 'class="active"' : ''; ?>">Genre </a>
+                            <a href="#" class="dropbtn <?php echo ($currentPage == "genre.php") ? ' active': ''; ?>">Genre </a>
                             <div class="submenu dropdown-content">
                                 <?php if (isset($item['submenu'])) : ?>
                                     <div class=" bg-gray-300 h-56 w-56  mt-0 submenu dropdown-content rounded-lg shadow-lg">
@@ -190,7 +193,7 @@ $menuItems = array(
                         </div>
                     <?php elseif ($item['text'] === 'Year') : ?>
                         <div class="dropdown ">
-                            <a href="#" class=" dropbtn mb-0<?php echo ($currentPage == $item['url']) ? 'class="active"' : ''; ?>">Year</a>
+                            <a href="#" class=" dropbtn mb-0<?php echo ($currentPage == "year.php") ? ' active' : ''; ?>">Year</a>
                             <div class="submenu dropdown-content ">
                                 <?php if (isset($item['submenu'])) : ?>
                                     <div class=" bg-gray-300 h-56 w-56  mt-0 submenu dropdown-content rounded-lg shadow-lg">
@@ -203,7 +206,7 @@ $menuItems = array(
                             </div>
                         </div>
                     <?php else : ?>
-                        <a href="<?php echo $item['url']; ?>" <?php echo ($currentPage == $item['url']) ? 'class="active"' : ''; ?>>
+                        <a href="<?php echo $item['url']; ?>" <?php echo ($currentPage == strtolower($item['text']) . ".php") ? 'class="active"' : ''; ?>>
                             <?php echo $item['text']; ?>
                         </a>
                     <?php endif; ?>
