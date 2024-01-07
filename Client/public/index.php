@@ -153,9 +153,22 @@
         document.getElementById('mobile-menu-close').addEventListener('click', function() {
             document.getElementById('mobile-sidebar').classList.remove('open');
         });
+
     </script>
 
     <script>
+         $.event.special.touchstart = {
+            setup: function (_, ns, handle) {
+              this.addEventListener("touchstart", handle, { passive: false });
+            },
+          };
+      
+          $.event.special.touchmove = {
+            setup: function (_, ns, handle) {
+              this.addEventListener("touchmove", handle, { passive: false });
+            },
+          };
+          
         $('.owl-carousel').owlCarousel({
             items: 1,
             loop: true,
