@@ -176,7 +176,7 @@
             </div>
         </div>
     </div>
-    <?php include './components/footer2.php'; ?>
+    <?php include './components/footer.php'; ?>
     <script>
         //menu toggle button
         document.getElementById('mobile-menu-toggle').addEventListener('click', function() {
