@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"> -->
     <link rel="stylesheet" href="../styles.css">
@@ -141,11 +141,44 @@
                     </div>
                 </div>
             </div>
-            <!-- Your content goes here -->
         </div>
     </div>
     <!--hero section end -->
+
+
+    <!-- treding section start -->
+    <div class=" w-full h-full bg-gradient-to-tr from-green-900 to-gray-900">
+        <h1 class=" text-3xl  ml-4 mb-4 text-white border-b-2 w-8">Treding</h1>
+        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 mx-2">
+            <!-- grid items  -->
+            <div class=" group " id="poster-container">
+                <div class="flex flex-col items-center justify-center text-white bg-gray-200 p-4 h-64  bg-cover bg-center" style="background-image: url('../images/venom.jpg');">
+                    <button id="play-btn" class=" hidden group-hover:block outline-none border-0"><img class="h-20" src="../images/play.png" alt="" srcset=""></button>
+                </div>
+                <p>Title</p>
+                <p>year : Duration</p>
+            </div>
+
+            <div class="bg-gray-200 p-4 h-64  bg-cover bg-center" style="background-image: url('../images/it.jpg');">
+
+            </div>
+            <div class="bg-gray-200 p-4 h-64  bg-cover bg-center" style="background-image: url('../images/jocker.jpg');">
+
+            </div>
+            <div class="bg-gray-200 p-4 h-64  bg-cover bg-center" style="background-image: url('../images/Demon Slayer.jpg');">
+
+            </div>
+            <div class="bg-gray-200 p-4 h-64  bg-cover bg-center" style="background-image: url('../images/supermario.jpg');">
+
+            </div>
+            <div class="bg-gray-200 p-4 h-64  bg-cover bg-center" style="background-image: url('../images/mimo.jpg');">
+
+            </div>
+        </div>
+    </div>
+    <?php include './components/footer2.php'; ?>
     <script>
+        //menu toggle button
         document.getElementById('mobile-menu-toggle').addEventListener('click', function() {
             document.getElementById('mobile-sidebar').classList.add('open');
         });
@@ -153,42 +186,42 @@
         document.getElementById('mobile-menu-close').addEventListener('click', function() {
             document.getElementById('mobile-sidebar').classList.remove('open');
         });
-
-    </script>
-
-    <script>
-         $.event.special.touchstart = {
-            setup: function (_, ns, handle) {
-              this.addEventListener("touchstart", handle, { passive: false });
+        //remove event passive
+        $.event.special.touchstart = {
+            setup: function(_, ns, handle) {
+                this.addEventListener("touchstart", handle, {
+                    passive: false
+                });
             },
-          };
-      
-          $.event.special.touchmove = {
-            setup: function (_, ns, handle) {
-              this.addEventListener("touchmove", handle, { passive: false });
+        };
+
+        $.event.special.touchmove = {
+            setup: function(_, ns, handle) {
+                this.addEventListener("touchmove", handle, {
+                    passive: false
+                });
             },
-          };
-          
+        };
+
+        //carousel
         $('.owl-carousel').owlCarousel({
             items: 1,
             loop: true,
             autoplay: true,
             nav: false,
             dots: false,
-            //   responsive: {
-            //     0: {
-            //       items: 1,
-            //     },
-            //     600: {
-            //       items: 3, 
-            //     },
-            //     992: {
-            //       items: 3,
-            //     },
-            //     1200: {
-            //       items: 3,
-            //     },
-            //   },
+        });
+
+        //play button
+        const parent = document.getElementById('poster-container');
+        const child = document.getElementById('play-btn');
+
+        parent.addEventListener('mouseenter', () => {
+            child.classList.remove('hidden');
+        });
+
+        parent.addEventListener('mouseleave', () => {
+            child.classList.add('hidden');
         });
     </script>
 </body>
