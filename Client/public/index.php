@@ -147,8 +147,8 @@
 
 
     <!-- treding section start -->
-    <div class=" w-full h-full bg-gradient-to-tr from-green-900 to-gray-900">
-        <h1 class=" text-3xl  ml-4 mb-4 text-white border-b-2 w-8">Treding</h1>
+    <div class=" w-full h-full bg-gradient-to-tl from-green-900 to-gray-900">
+        <h1 class=" text-3xl  ml-4 mb-4 text-white border-b-2 w-8 pt-4">Treding</h1>
         <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 mx-2">
             <!-- grid items  -->
             <div class=" group " id="poster-container">

@@ -3,8 +3,8 @@
 $currentPage = basename($_SERVER['PHP_SELF']);
 // Define menu items
 $menuItems = array(
-    array('text' => 'Home', 'url' => 'index.php'),
-    array('text' => 'Movies', 'url' => 'discover.php'),
+    array('text' => 'Home', 'url' => '../index.php'),
+    array('text' => 'Movies', 'url' => '../views/movies.php'),
     array('text' => 'Recently Added', 'url' => 'recently.php'),
     //gener array
     array('text' => 'Genre', 'url' => '#', 'submenu' => array(
