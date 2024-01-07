@@ -56,7 +56,7 @@ $menuItems = array(
         }
 
         nav a {
-            color:gainsboro;
+            color: gainsboro;
             text-decoration: none;
             transition: color 0.3s ease;
         }
@@ -75,8 +75,8 @@ $menuItems = array(
 
 
 
-       
-    
+
+
 
         /* Add this style for .dropdown */
         .submenu {
@@ -233,6 +233,9 @@ $menuItems = array(
             </div>
         </div>
     </nav>
+    <!--navbar end-->
+
+    <!-- hero section start-->
     <div class="owl-carousel shadow-lg relative ">
         <div class="relative h-screen bg-cover bg-center" style="background-image: url('../images/mimo.jpg');">
             <div class="absolute inset-0 bg-gradient-to-r from-black to-transparent opacity-75 flex flex-col items-start justify-center h-screen">
@@ -296,6 +299,9 @@ $menuItems = array(
             <!-- Your content goes here -->
         </div>
     </div>
+    <!--hero section end -->
+
+    
     <script>
         $('.owl-carousel').owlCarousel({
             items: 1,
