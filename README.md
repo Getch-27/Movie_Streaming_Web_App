@@ -1,12 +1,12 @@
 # Movie Streaming Web App
 
-A movie streaming web app built with React, PHP, and MySQL.
+A movie streaming web app built with PHP, and MySQL , and tailwindcss.
 
 ## Getting Started
 
 ### Prerequisites
 
-- Node.js and npm: [Install Node.js and npm](https://nodejs.org/)
+- Node.js and npm: [Install Node.js and npm](https://nodejs.org/) for Tailwind
 - PHP: [Install PHP](https://www.php.net/)
 - MySQL: [Install MySQL](https://www.mysql.com/)
 
