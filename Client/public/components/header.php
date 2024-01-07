@@ -32,6 +32,7 @@ $menuItems = array(
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <base href="http://localhost/Movie_Streaming_Web_App/client/public/components/header.php" />
     <!-- <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"> -->
     <link rel="stylesheet" href="../styles.css">
 
@@ -73,11 +74,6 @@ $menuItems = array(
 
             /* font-weight: bold; */
         }
-
-
-
-
-
 
         /* Add this style for .dropdown */
         .submenu {
@@ -235,13 +231,3 @@ $menuItems = array(
         </div>
     </nav>
     <!--navbar end-->
-<!-- script for menu toggle -->
-<script>
-        document.getElementById('mobile-menu-toggle').addEventListener('click', function() {
-            document.getElementById('mobile-sidebar').classList.add('open');
-        });
-
-        document.getElementById('mobile-menu-close').addEventListener('click', function() {
-            document.getElementById('mobile-sidebar').classList.remove('open');
-        });
-    </script>
