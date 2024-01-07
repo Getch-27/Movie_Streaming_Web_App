@@ -14,10 +14,10 @@ $menuItems = array(
     )),
     //year array
     array('text' => 'Year', 'url' => '#', 'submenu' => array(
-        array('text' => '2020', 'url' => 'action.php'),
-        array('text' => '2021', 'url' => 'comedy.php'),
-        array('text' => '2022', 'url' => 'drama.php'),
-        array('text' => '2023', 'url' => 'drama.php'),
+        array('text' => '2020', 'url' => '../views/year.php?year=2020'),
+        array('text' => '2021', 'url' => '../views/year.php?year=2021'),
+        array('text' => '2022', 'url' => '../views/year.php?year=2022'),
+        array('text' => '2023', 'url' => '../views/year.php?year=2023'),
     )),
 
     array('text' => 'About Us', 'url' => 'aboutUs.php'),
