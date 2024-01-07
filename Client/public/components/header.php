@@ -8,9 +8,9 @@ $menuItems = array(
     array('text' => 'Recently Added', 'url' => 'recently.php'),
     //gener array
     array('text' => 'Genre', 'url' => '#', 'submenu' => array(
-        array('text' => 'Action', 'url' => 'action.php'),
-        array('text' => 'Comedy', 'url' => 'comedy.php'),
-        array('text' => 'Drama', 'url' => 'drama.php'),
+        array('text' => 'Action', 'url' => '../views/genre.php?genre=action'),
+        array('text' => 'Comedy', 'url' => '../views/genre.php?genre=comedy'),
+        array('text' => 'Drama', 'url' => '../views/genre.php?genre=drama'),
     )),
     //year array
     array('text' => 'Year', 'url' => '#', 'submenu' => array(
