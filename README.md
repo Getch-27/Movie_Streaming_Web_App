@@ -13,13 +13,13 @@ A movie streaming web app built with PHP, and MySQL , and tailwindcss.
 ### Installation
 
    ```bash
-   git clone https://github.com/Getch-27/movie-streaming-app.git
+   git clone https://github.com/Getch-27/Movie_Streaming_Web_App.git
    cd movie-streaming-app
    
-   //for react app
+   //for front end
    cd client
    npm install
-   npm run dev
+   //link http://localhost/Movie_Streaming_Web_App/client/public/
    
    //for server or php
    cd server
