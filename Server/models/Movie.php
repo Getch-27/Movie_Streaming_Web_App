@@ -101,7 +101,7 @@ class Movie
         if ($stmt->execute()) {
             $last_id = $this->conn->lastInsertId();
             // Remove spaces after commas and split the string into an array
-            $genreArray = $data['genres'];
+            $genreArray = explode(',', $data['genres']);
 
             // Trim whitespace from each genre
             $genreArray = array_map('trim', $genreArray);

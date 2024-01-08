@@ -1,36 +1,44 @@
 <?php
 if (isset($_POST["username"]) && $_POST["password"]) {
-        $username = $_POST["username"];
-        $password = $_POST["password"];
-        $apiEndpoint = 'http://localhost/Movie_Streaming_Web_App/Server/api/creator/login.php';
-        $data = array(
-            'username' => $username,
-            'password' => $password
-        );
-        // cURL setup
-        $ch = curl_init($apiEndpoint);
+    $username = $_POST["username"];
+    $password = $_POST["password"];
+    $apiEndpoint = 'http://localhost/Movie_Streaming_Web_App/Server/api/creator/login.php';
+    $data = array(
+        'username' => $username,
+        'password' => $password
+    );
+    // cURL setup
+    $ch = curl_init($apiEndpoint);
 
-        // Set cURL options
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);  // Return response as a string
-        curl_setopt($ch, CURLOPT_POST, true);            // Set as POST request
-        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));     // Set POST data
-        curl_setopt($ch, CURLOPT_HTTPHEADER, [
-            'Content-Type: application/json',            // Adjust content type
-        ]);
-        // Execute cURL session and capture the response
-        $response = curl_exec($ch);
+    // Set cURL options
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);  // Return response as a string
+    curl_setopt($ch, CURLOPT_POST, true);            // Set as POST request
+    curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));     // Set POST data
+    curl_setopt($ch, CURLOPT_HTTPHEADER, [
+        'Content-Type: application/json',            // Adjust content type
+    ]);
+    // Execute cURL session and capture the response
+    $response = curl_exec($ch);
 
-        // Check for errors
-        if (curl_errno($ch)) {
-            echo 'cURL error: ' . curl_error($ch);
-        }
-
-        // Close cURL session
-        curl_close($ch);
-
-        // Output the API response
-        echo $response;
+    // Check for errors
+    if (curl_errno($ch)) {
+        echo 'cURL error: ' . curl_error($ch);
     }
+
+    // Close cURL session
+    curl_close($ch);
+    // Get the HTTP status code
+    $httpStatus = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+
+    if ($httpStatus == 200) {
+        // Successful response
+         header('location:uploadMovie.php');
+    } else {
+        // Handle error based on the status code
+        echo 'Request failed with status code: ' . $httpStatus;
+        // Process $response or handle error accordingly
+    }
+}
 ?>
 
 
