@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 04, 2024 at 11:23 AM
+-- Generation Time: Jan 08, 2024 at 01:40 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.0.28
 
@@ -20,6 +20,26 @@ SET time_zone = "+00:00";
 --
 -- Database: `movie_streaming_db`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `creator`
+--
+
+CREATE TABLE `creator` (
+  `id` int(11) NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `creator`
+--
+
+INSERT INTO `creator` (`id`, `username`, `password`) VALUES
+(1, 'creator', '123'),
+(2, 'creator2', '123');
 
 -- --------------------------------------------------------
 
@@ -79,7 +99,10 @@ CREATE TABLE `movie` (
 INSERT INTO `movie` (`movie_id`, `title`, `rating`, `released_year`, `duration`, `description`, `video_url`, `poster_url`, `trailer`) VALUES
 (1, 'The Creator', 7.13, '2023', '134', 'Amid a future war between the human race and the forces of artificial intelligence, a hardened ex-special forces agent grieving the disappearance of his wife, is recruited to hunt down and kill the Creator, the elusive architect of advanced AI who has dev', 'abab', 'adda', 'https://www.youtube.com/watch?v=ex3C1-5Dhb8'),
 (4, 'The Creator', 7.13, '2023', '134', 'Amid a future war between the human race and the forces of artificial intelligence, a hardened ex-special forces agent grieving the disappearance of his wife, is recruited to hunt down and kill the Creator, the elusive architect of advanced AI who has dev', 'abab', 'adda', 'https://www.youtube.com/watch?v=ex3C1-5Dhb8'),
-(56, 'Rebel Moon - Part One: A Child of Fire', 5.7, '2023', '2h 12m', 'When a peaceful settlement on the edge of a distant moon finds itself threatened by the armies of a tyrannical ruling force, a mysterious stranger living among its villagers becomes their best hope for survival.', 'uploads/Rebel Moon - Part One_ A Child of Fire _ Official Trailer _ Netflix.mp4', 'uploads/posterReble moon.jpg', 'https://www.youtube.com/watch?v=fhr3MzT6exg');
+(74, 'shsjh', 0, 'fghj', 'sdssd', 'sdasdss', 'uploads/2798. Number of Employees Who Met the Target (Leetcode Easy).mp4', 'uploads/posterai-brain.png', 'sdds'),
+(75, '', 0, '', '', '', 'uploads/the.mp4', 'uploads/posterconnect.png', ''),
+(76, '', 0, '', '', '', 'uploads/the.mp4', 'uploads/posterconnect.png', ''),
+(77, 'zXVzvzvx', 0, 'ZXVzV', 'zxv', 'zvzXV', 'uploads/the.mp4', 'uploads/posterflask.png', 'ZXV');
 
 -- --------------------------------------------------------
 
@@ -103,13 +126,20 @@ INSERT INTO `movie_genres` (`movie_id`, `genre_id`) VALUES
 (4, 4),
 (4, 5),
 (4, 6),
-(56, 1),
-(56, 2),
-(56, 5);
+(74, 2),
+(74, 7),
+(74, 8),
+(77, 1);
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `creator`
+--
+ALTER TABLE `creator`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `genre`
@@ -135,6 +165,12 @@ ALTER TABLE `movie_genres`
 --
 
 --
+-- AUTO_INCREMENT for table `creator`
+--
+ALTER TABLE `creator`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `genre`
 --
 ALTER TABLE `genre`
@@ -144,7 +180,7 @@ ALTER TABLE `genre`
 -- AUTO_INCREMENT for table `movie`
 --
 ALTER TABLE `movie`
-  MODIFY `movie_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
+  MODIFY `movie_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
 
 --
 -- Constraints for dumped tables
