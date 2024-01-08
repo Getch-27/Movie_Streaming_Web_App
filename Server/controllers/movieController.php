@@ -43,8 +43,8 @@ class MovieController
 
         // Move the uploaded file to the destination folder
         if (move_uploaded_file($vidTmp, $videoPath) && move_uploaded_file($posTmp, $posterPath)) {
-            $this->movie->uploadMovie($data ,$videoPath, $posterPath);
-
+           return $this->movie->uploadMovie($data ,$videoPath, $posterPath);
+             
         } else {
             
             return false;

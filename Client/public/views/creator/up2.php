@@ -27,7 +27,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             'description' => $_POST['description'],
             'genres' => isset($_POST['genres']) ? implode(',',$_POST['genres'] ): "",
             'trailer' => $_POST['trailer'],
-            
             'poster' => curl_file_create($poster_tmp_name, $poster_type, $poster_name),
             'video' => curl_file_create($video_tmp_name, $video_type, $video_name),
         );
