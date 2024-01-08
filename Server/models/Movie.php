@@ -104,7 +104,6 @@ class Movie
             $genreArray = explode(',', $data['genres']);
             
             // Trim whitespace from each genre
-            // $genreArray = array_map('trim', $genreArray);
             foreach ($genreArray as $genre) {
                 $sql = " SELECT *FROM " . $this->genre_table . " WHERE genre_name = '$genre'";
                 $stmtGenreId = $this->conn->prepare($sql);
