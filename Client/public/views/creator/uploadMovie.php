@@ -112,9 +112,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <label for="description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Description</label>
         <textarea name="description" type="text" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border p-2 border-blue-500 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Leave a comment..."></textarea>
         <!-- #region -->
-        <div class="dropdown">
-            <h1 clsss="dropbtn w-4 bg-gray-900 text-base text-white">genre</h1>
-            <div class="submenu dropdown-content w-full grid grid-cols-4">
+        <div class="dropdown ">
+            <h1 clsss="dropbtn w-4 bg-gray-900 text-lg ">Genre</h1>
+            <div class="submenu dropdown-content w-56 p-3 bg-gray-900 grid grid-cols-4 gap-3 rounded-lg shadow-sm text-gray-200">
                 <input type="checkbox" name="genres[]" value="Action">
                 <label for="actionCheckbox">Action</label>
                 <input type="checkbox" name="genres[]" value="Adventure">
