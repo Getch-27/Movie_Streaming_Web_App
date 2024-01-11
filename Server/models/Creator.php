@@ -2,7 +2,7 @@
 class Creator
 {
     private $conn;
-    private $table = "creator";
+    private $table = "user";
     private $username;
     private $password;
     private $email;

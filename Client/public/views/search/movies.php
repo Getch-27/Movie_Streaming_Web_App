@@ -1,4 +1,4 @@
-<?php include_once("../components/header.php") ?>
+<?php include_once("../../components/header.php") ?>
 
 
     <!-- treding section start -->
@@ -8,7 +8,7 @@
             <!-- grid items  -->
             <div class=" group " id="poster-container">
                 <div class="flex flex-col items-center justify-center text-white bg-gray-200 p-4 h-64  bg-cover bg-center" style="background-image: url('../images/venom.jpg');">
-                    <button id="play-btn" class=" hidden group-hover:block outline-none border-0"><img class="h-20" src="../images/play.png" alt="" srcset=""></button>
+                    <button id="play-btn" class=" hidden group-hover:block outline-none border-0"><img class="h-20" src="../../images/play.png" alt="" srcset=""></button>
                 </div>
                 <p>Title</p>
                 <p>year : Duration</p>
@@ -33,4 +33,4 @@
     </div>
 
 
-<?php include_once("../components/footer.php") ?>
+<?php include_once("../../components/footer.php") ?>

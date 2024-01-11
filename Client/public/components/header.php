@@ -7,20 +7,20 @@ if($currentPage == 'index.php') {
 // Define menu items
 $menuItems = array(
     array('text' => 'Home', 'url' => '../index.php'),
-    array('text' => 'Movies', 'url' => '../views/movies.php'),
+    array('text' => 'Movies', 'url' => '../views/search/movies.php'),
     array('text' => 'Recently Added', 'url' => 'recently.php'),
     //gener array
     array('text' => 'Genre', 'url' => '#', 'submenu' => array(
-        array('text' => 'Action', 'url' => '../views/genre.php?genre=action'),
-        array('text' => 'Comedy', 'url' => '../views/genre.php?genre=comedy'),
-        array('text' => 'Drama', 'url' => '../views/genre.php?genre=drama'),
+        array('text' => 'Action', 'url' => '../views/search/genre.php?genre=action'),
+        array('text' => 'Comedy', 'url' => '../views/search/genre.php?genre=comedy'),
+        array('text' => 'Drama', 'url' => '../views/search/genre.php?genre=drama'),
     )),
     //year array
     array('text' => 'Year', 'url' => '#', 'submenu' => array(
-        array('text' => '2020', 'url' => '../views/year.php?year=2020'),
-        array('text' => '2021', 'url' => '../views/year.php?year=2021'),
-        array('text' => '2022', 'url' => '../views/year.php?year=2022'),
-        array('text' => '2023', 'url' => '../views/year.php?year=2023'),
+        array('text' => '2020', 'url' => '../views/search/year.php?year=2020'),
+        array('text' => '2021', 'url' => '../views/search/year.php?year=2021'),
+        array('text' => '2022', 'url' => '../views/search/year.php?year=2022'),
+        array('text' => '2023', 'url' => '../views/search/year.php?year=2023'),
     )),
 
     array('text' => 'About Us', 'url' => 'aboutUs.php'),
@@ -219,8 +219,8 @@ $menuItems = array(
                 <button type="submit" class="search-button"><img class="h-8" src="../images/search.png" alt="" srcset=""></button>
             </form>
             <div class="hidden lg:flex space-x-4">
-                <a href="signin.php" class=" px-4 py-2 bg-transparent text-white font-bold rounded-2xl border border-green-600 w-24">Login</a>
-                <a href="signin.php" class=" px-4 py-2 bg-transparent text-white font-bold rounded-2xl border border-green-600 w-24">Signup</a>
+                <a href="../../public/views/user/login.php" class=" px-4 py-2 bg-transparent text-white font-bold rounded-2xl border border-green-600 w-24">Login</a>
+                <a href="../../public/views/user/signin.php" class=" px-4 py-2 bg-transparent text-white font-bold rounded-2xl border border-green-600 w-24">Signup</a>
             </div>
 
             <!-- Menu Button -->

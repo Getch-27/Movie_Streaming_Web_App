@@ -135,10 +135,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <label for="Science Fiction">Science Fiction</label>
             </div>
         </div>
-        <div style="background-color: aquamarine">
-
-
-        </div>
         <label for="poster" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Poster</label>
         <input class="block w-full mb-5 text-sm text-gray-900 border border-gray-900 rounded-lg cursor-pointer focus:outline-none  dark:placeholder-gray-400" type="file" name="poster" accept="image/*">
         <label for="video" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Video</label>

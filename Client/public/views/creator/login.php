@@ -55,7 +55,7 @@ if (isset($_POST["username"]) && $_POST["password"]) {
 <body class="flex flex-col items-center justify-center w-screen h-screen bg-gradient-to-tl from-green-900 to-gray-900 text-gray-700">
 
     <!-- Component Start -->
-    <h1 class="font-bold text-2xl">Admin Login</h1>
+    <h1 class="font-bold text-2xl">Creator Login</h1>
     <form action="<?php echo $_SERVER['PHP_SELF']; ?>" class="flex flex-col bg-white rounded shadow-lg p-12 mt-12" method="POST">
         <label class="font-semibold text-xs" for="usernameField">Username or Email</label>
         <input name="username" class="flex items-center h-12 px-4 w-64 bg-gray-200 mt-2 rounded focus:outline-none focus:ring-2" type="text">
