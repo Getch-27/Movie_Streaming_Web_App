@@ -25,7 +25,7 @@ class MovieController
 
         // Define the destination folder (create it if it doesn't exist)
         $videoDestinationFolder = 'uploads/';
-        $posterDestinationFolder='uploads/poster';
+        $posterDestinationFolder='uploads/poster/';
 
 
         if (!file_exists($videoDestinationFolder)) {
