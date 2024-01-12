@@ -50,7 +50,6 @@ class Movie
 
             default:
                 return ['message' => 'Invalid search mode'];
-                
         }
         if ($this->search_mode === 'genre_name') {
             $query = "SELECT m.*,
@@ -60,7 +59,7 @@ class Movie
             LEFT JOIN genre g ON mg.genre_id = g.genre_id 
             WHERE g." . $this->search_mode . " = :search_key
             GROUP BY m.movie_id";
-        } else {
+        } else if ($this->search_mode === 'title') {
             $query = "SELECT m.*,
             GROUP_CONCAT(g.genre_name) AS genre_names
             FROM $this->table m 
@@ -68,7 +67,14 @@ class Movie
             LEFT JOIN genre g ON mg.genre_id = g.genre_id 
             WHERE LEFT(m." . $this->search_mode . ", 3) = LEFT(:search_key, 3)
             GROUP BY m.movie_id";
-
+        } else {
+            $query = "SELECT m.*,
+            GROUP_CONCAT(g.genre_name) AS genre_names
+            FROM $this->table m 
+            LEFT JOIN movie_genres mg ON m.movie_id = mg.movie_id
+            LEFT JOIN genre g ON mg.genre_id = g.genre_id 
+            WHERE m." . $this->search_mode . " = :search_key
+            GROUP BY m.movie_id";
         }
 
 
@@ -81,7 +87,7 @@ class Movie
         return $stmt;
     }
     //function to upload a movie
-    public function uploadMovie($data , $videoPath, $posterPath )
+    public function uploadMovie($data, $videoPath, $posterPath)
     {
 
         $query = "INSERT INTO $this->table (title, rating, released_year, duration, description, video_url, poster_url, trailer) VALUES (:title, :rating, :released_year, :duration, :description, :video_url, :poster_url,:trailer)";
@@ -96,14 +102,14 @@ class Movie
         $stmt->bindParam(':poster_url', $posterPath);
 
 
-  
-        
+
+
         //excute the request
         if ($stmt->execute()) {
             $last_id = $this->conn->lastInsertId();
             // Remove spaces after commas and split the string into an array
             $genreArray = explode(',', $data['genres']);
-            
+
             // Trim whitespace from each genre
             foreach ($genreArray as $genre) {
                 $sql = " SELECT *FROM " . $this->genre_table . " WHERE genre_name = '$genre'";
@@ -116,7 +122,7 @@ class Movie
                     $genreId = $stmtGenreId->fetch(PDO::FETCH_ASSOC)['genre_id'];
                 }
 
-               // Insert into the 'movie_genres' table
+                // Insert into the 'movie_genres' table
                 $queryGenre = "INSERT INTO movie_genres (movie_id, genre_id) VALUES (:movie_id, :genre_id)";
                 $stmtGenre = $this->conn->prepare($queryGenre);
                 $stmtGenre->bindParam(':movie_id', $last_id);

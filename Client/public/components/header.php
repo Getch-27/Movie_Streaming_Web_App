@@ -9,22 +9,34 @@ $menuItems = array(
     array('text' => 'Home', 'url' => '../index.php'),
     array('text' => 'Movies', 'url' => '../views/search/movies.php'),
     array('text' => 'Recently Added', 'url' => 'recently.php'),
-    //gener array
+    //genre array
     array('text' => 'Genre', 'url' => '#', 'submenu' => array(
         array('text' => 'Action', 'url' => '../views/search/genre.php?genre=action'),
         array('text' => 'Comedy', 'url' => '../views/search/genre.php?genre=comedy'),
         array('text' => 'Drama', 'url' => '../views/search/genre.php?genre=drama'),
+        array('text' => 'Horror', 'url' => '../views/search/genre.php?genre=horror'),
+        array('text' => 'Sci-Fi', 'url' => '../views/search/genre.php?genre=sci-fi'),
+        array('text' => 'Thriller', 'url' => '../views/search/genre.php?genre=thriller'),
+        array('text' => 'Romance', 'url' => '../views/search/genre.php?genre=romance'),
+        array('text' => 'Mystery', 'url' => '../views/search/genre.php?genre=mystery'),
+        array('text' => 'Fantasy', 'url' => '../views/search/genre.php?genre=fantasy'),
+        array('text' => 'Animation', 'url' => '../views/search/genre.php?genre=animation'),
+        array('text' => 'Adventure', 'url' => '../views/search/genre.php?genre=adventure'),
+        array('text' => 'Crime', 'url' => '../views/search/genre.php?genre=crime'),
+       
     )),
     //year array
-    array('text' => 'Year', 'url' => '#', 'submenu' => array(
-        array('text' => '2020', 'url' => '../views/search/year.php?year=2020'),
-        array('text' => '2021', 'url' => '../views/search/year.php?year=2021'),
-        array('text' => '2022', 'url' => '../views/search/year.php?year=2022'),
-        array('text' => '2023', 'url' => '../views/search/year.php?year=2023'),
-    )),
-
-    array('text' => 'About Us', 'url' => 'aboutUs.php'),
+    array('text' => 'Year', 'url' => '#', 'submenu' => array())
 );
+$menuItems[] = array('text' => 'About Us', 'url' => 'aboutUs.php');
+// Generate year array and append to the 'Year' submenu
+for ($year = 2003; $year <= 2023; $year++) {
+    $menuItems[4]['submenu'][] = array(
+        'text' => $year,
+        'url' => "../views/search/year.php?year=$year"
+    );
+}
+
 
 ?>
 
@@ -82,7 +94,6 @@ $menuItems = array(
         .submenu {
             display: none;
             position: absolute;
-            background-color: #1a202c;
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
             z-index: 1;
         }
@@ -130,9 +141,9 @@ $menuItems = array(
                             <?php if ($item['text'] === 'Genre') : ?>
                                 <div class="dropdown">
                                     <a href="" class="dropbtn cursor-not-allowed <?php echo ($currentPage == "genre.php") ? ' active ' : ''; ?>">Genre </a>
-                                    <div class="submenu dropdown-content">
+                                    <div class="submenu  dropdown-content">
                                         <?php if (isset($item['submenu'])) : ?>
-                                            <div class=" bg-gray-300 h-56 w-56  mt-5 submenu dropdown-content rounded-lg shadow-lg">
+                                            <div class=" h-56  w-64  mt-5 grid grid-cols-4 dropdown-content rounded-lg shadow-lg hover:block">
                                                 <?php foreach ($item['submenu'] as $key => $value) : ?>
                                                     <a href="<?php echo $value['url'] ?>"> <?php echo $value['text'] ?></a>
                                                 <?php endforeach ?>
@@ -146,7 +157,7 @@ $menuItems = array(
                                     <a href="#" class="dropbtn <?php echo ($currentPage == $item['url']) ? 'active' : ''; ?>">Year</a>
                                     <div class="submenu dropdown-content">
                                         <?php if (isset($item['submenu'])) : ?>
-                                            <div class=" bg-gray-300 h-56 w-56  mt-5 submenu dropdown-content rounded-lg shadow-lg">
+                                            <div class=" bg-gray-300 h-56 w-56  mt-5 submenu dropdown-content rounded-lg shadow-lg hover:block">
                                                 <?php foreach ($item['submenu'] as $key => $value) : ?>
                                                     <a href="<?php echo $value['url'] ?>"> <?php echo $value['text'] ?></a>
                                                 <?php endforeach ?>
@@ -164,7 +175,7 @@ $menuItems = array(
                     </div>
                     <div class=" lg:flex space-x-4 search-box">
                         <input type="text" placeholder="Search movies...">
-                        <button class="search-button" onclick="toggleSearchOptions()">Search</button>
+                        <button class="search-button " onclick="toggleSearchOptions()">Search</button>
                     </div>
                     <div class=" lg:flex space-x-4">
                         <a href="signin.php" class="login">Login</a>
@@ -180,9 +191,9 @@ $menuItems = array(
                     <?php if ($item['text'] === 'Genre') : ?>
                         <div class="dropdown">
                             <a href="#" class="dropbtn <?php echo ($currentPage == "genre.php") ? ' active': ''; ?>">Genre </a>
-                            <div class="submenu dropdown-content">
+                            <div class="submenu dropdown-content pt-8 bg-transparent">
                                 <?php if (isset($item['submenu'])) : ?>
-                                    <div class=" bg-gray-300 h-56 w-56  mt-0 submenu dropdown-content rounded-lg shadow-lg">
+                                    <div class=" bg-gray-900  h-56 grid grid-cols-4 mt-0 bg-opacity-75 dropdown-content rounded-lg shadow-lg">
                                         <?php foreach ($item['submenu'] as $key => $value) : ?>
                                             <a href="<?php echo $value['url'] ?>"> <?php echo $value['text'] ?></a>
                                         <?php endforeach ?>
@@ -194,9 +205,9 @@ $menuItems = array(
                     <?php elseif ($item['text'] === 'Year') : ?>
                         <div class="dropdown ">
                             <a href="#" class=" dropbtn mb-0<?php echo ($currentPage == "year.php") ? ' active' : ''; ?>">Year</a>
-                            <div class="submenu dropdown-content ">
+                            <div class="submenu dropdown-content pt-8 bg-transparent">
                                 <?php if (isset($item['submenu'])) : ?>
-                                    <div class=" bg-gray-300 h-56 w-56  mt-0 submenu dropdown-content rounded-lg shadow-lg">
+                                    <div class=" bg-gray-900  h-56 grid grid-cols-5 mt-0 bg-opacity-75 dropdown-content rounded-lg shadow-lg">
                                         <?php foreach ($item['submenu'] as $key => $value) : ?>
                                             <a href="<?php echo $value['url'] ?>"> <?php echo $value['text'] ?></a>
                                         <?php endforeach ?>
