@@ -214,8 +214,8 @@ $menuItems = array(
             </div>
 
             <!-- Additional Desktop Elements -->
-            <form action="../views/search.php" method="GET" class="hidden lg:flex space-x-4">
-                <input class=" p-2 rounded-lg outline-none bg-gray-300 bg-opacity-50" type="text" placeholder="Search movies...">
+            <form action="../views/search/title.php" method="GET" class="hidden lg:flex space-x-4">
+                <input class=" p-2 rounded-lg outline-none bg-gray-300 bg-opacity-50" name="title" type="text" placeholder="Search movies...">
                 <button type="submit" class="search-button"><img class="h-8" src="../images/search.png" alt="" srcset=""></button>
             </form>
             <div class="hidden lg:flex space-x-4">

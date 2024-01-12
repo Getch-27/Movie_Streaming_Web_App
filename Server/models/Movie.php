@@ -66,8 +66,9 @@ class Movie
             FROM $this->table m 
             LEFT JOIN movie_genres mg ON m.movie_id = mg.movie_id
             LEFT JOIN genre g ON mg.genre_id = g.genre_id 
-            WHERE m." . $this->search_mode . " = :search_key
+            WHERE LEFT(m." . $this->search_mode . ", 3) = LEFT(:search_key, 3)
             GROUP BY m.movie_id";
+
         }
 
 
