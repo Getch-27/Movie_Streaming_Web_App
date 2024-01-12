@@ -34,7 +34,21 @@ $movie = urldecode($_GET["video_link"]);
         // JavaScript to handle play/pause functionality
         const video = document.getElementById('myVideo');
         const playButton = document.getElementById('playButton');
+        $.event.special.touchstart = {
+            setup: function(_, ns, handle) {
+                this.addEventListener("touchstart", handle, {
+                    passive: false
+                });
+            },
+        };
 
+        $.event.special.touchmove = {
+            setup: function(_, ns, handle) {
+                this.addEventListener("touchmove", handle, {
+                    passive: false
+                });
+            },
+        };
         video.addEventListener('mouseenter', () => {
             playButton.classList.remove('hidden');
         });

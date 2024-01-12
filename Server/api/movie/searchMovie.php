@@ -36,11 +36,14 @@ if ($data) {
             );
             array_push($movie_arr['data'], $movie_item);
         }
+        http_response_code(200); // OK
         echo json_encode($movie_arr);
     } else {
+        http_response_code(404); // not found
         echo json_encode(array('message' => 'Movie not found'));
     }
 } else {
+    http_response_code(400); // Unauthorized
     echo json_encode(['message' => 'Invalid request']);
 }
 ?>
