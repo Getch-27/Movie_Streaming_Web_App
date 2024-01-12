@@ -32,6 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
                 'description' => $description,
                 'video_url' => $video_url,
                 'poster_url' => $poster_url,
+                'trailer' => $trailer,
                 'genre_names' => $genre_names
             );
             array_push($movie_arr['data'], $movie_item);

@@ -18,11 +18,6 @@ curl_close($ch);
 $data = json_decode($response, true);
 $movie_data = $data['data'];
 ?>
-
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -107,66 +102,25 @@ $movie_data = $data['data'];
     <!-- hero section start-->
     <?php include_once("./components/header.php") ?>
     <div class="owl-carousel shadow-lg relative ">
-        <div class="relative h-screen bg-cover bg-center" style="background-image: url('../images/mimo.jpg');">
-            <div class="absolute inset-0 bg-gradient-to-r from-black to-transparent opacity-75 flex flex-col items-start justify-center h-screen">
-                <div class=" h-[50%]  mt-32  ml-8">
-                    <h2 class=" text-4xl font-bold mb-2 text-white" id="movie-title">Mimo</h2>
-                    <div class="info flex gap-5">
-                        <p class="text-lg" id="movie-rating">IMDB: 9.0</p>
-                        <p class="text-lg" id="movie-duration">Duration: 2h:30m</p>
-                        <p class="text-lg">Genre: Action, Animation</p>
-                        <p class="text-lg">Year: 2018</p>
-
-                    </div>
-                    <div class="play">
-                        <button class="mt-4 px-4 py-2 bg-transparent text-white font-bold rounded-2xl border border-green-600 w-24">Watch</button>
-                        <button class="mt-4 px-4 py-2 bg-transparent text-white font-bold rounded-2xl border border-green-600 w-24">Trailer</button>
-                    </div>
-
-
-
-                </div>
-            </div>
-        </div>
-        <div class="relative h-screen bg-cover bg-center" style="background-image: url('../images/black panther.jpg');">
-            <div class="absolute inset-0 bg-gradient-to-r from-black to-transparent opacity-75 flex flex-col items-start justify-center h-screen">
-                <div class=" h-1/2  mt-32 ml-8">
-                    <h2 class=" text-4xl font-bold mb-2 text-white" id="movie-title">Mimo</h2>
-                    <div class="info flex gap-5">
-                        <p class="text-lg" id="movie-rating">IMDB: 9.0</p>
-                        <p class="text-lg" id="movie-duration">Duration: 2h:30m</p>
-                        <p class="text-lg">Genre: Action, Animation</p>
-                        <p class="text-lg">Year: 2018</p>
-
-                    </div>
-                    <div class="play">
-                        <button class="mt-4 px-4 py-2 bg-transparent text-white font-bold rounded-2xl border border-green-600 w-24">Watch</button>
-                        <button class="mt-4 px-4 py-2 bg-transparent text-white font-bold rounded-2xl border border-green-600 w-24">Trailer</button>
-                    </div>
-
-
-
-                </div>
-            </div>
-        </div>
-        <div class="relative h-screen bg-cover bg-center" style="background-image: url('../images/venom.jpg');">
-            <div class="absolute inset-0 bg-gradient-to-r from-black to-transparent opacity-75 flex flex-col items-start justify-center h-screen">
-                <div class=" h-1/2  mt-32 ml-8">
-                    <h2 class=" text-4xl font-bold mb-2 text-white" id="movie-title">Venom</h2>
-                    <div class="info flex gap-5">
-                        <p class="text-lg" id="movie-rating">IMDB: 9.0</p>
-                        <p class="text-lg" id="movie-duration">Duration: 2h:30m</p>
-                        <p class="text-lg">Genre: Action, Animation</p>
-                        <p class="text-lg">Year: 2018</p>
-
-                    </div>
-                    <div class="play">
-                        <button class="mt-4 px-4 py-2 bg-transparent text-white font-bold rounded-2xl border border-green-600 w-24">Watch</button>
-                        <button class="mt-4 px-4 py-2 bg-transparent text-white font-bold rounded-2xl border border-green-600 w-24">Trailer</button>
+        <?php foreach ($movie_data as $movie) : ?>
+            <div class="relative h-screen bg-cover bg-center" style="background-image: url('http://localhost/Movie_Streaming_Web_App/Server/api/movie/<?php echo $movie['poster_url'] ?>');">
+                <div class="absolute inset-0 bg-gradient-to-r from-black to-transparent opacity-75 flex flex-col items-start justify-center h-screen">
+                    <div class=" h-[50%]  mt-32  ml-8">
+                        <h2 class=" text-4xl font-bold mb-2 text-white capitalize" id="movie-title"> <?php echo $movie['title'] ?></h2>
+                        <div class="info flex gap-5">
+                            <p class="text-lg" id="movie-rating">IMDB: <?php echo $movie['rating'] ?></p>
+                            <p class="text-lg" id="movie-duration">Duration: <?php echo $movie['duration'] ?></p>
+                            <p class="text-lg">Genre: <?php echo $movie['genre_names'] ?> </p>
+                            <p class="text-lg">Year: <?php echo $movie['released_year'] ?></p>
+                        </div>
+                        <div class="play">
+                            <a href="" class="mt-4 px-4 py-2 bg-transparent text-white font-bold rounded-2xl border border-green-600 w-24">Watch</a>
+                            <a href="../views/player/movieTrailer.php?trailer=<?php echo urlencode($movie['trailer']);?>" class="mt-4 px-4 py-2 bg-transparent text-white font-bold rounded-2xl border border-green-600 w-24">Trailer</a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        <?php endforeach; ?>
     </div>
     <!--hero section end -->
 
@@ -179,12 +133,11 @@ $movie_data = $data['data'];
 
             <?php foreach ($movie_data as $movie) : ?>
                 <div class=" group " id="poster-container">
-                    <div class="flex flex-col items-center justify-center text-white bg-gray-200 p-4 h-64  bg-cover bg-center" 
-                    style="background-image: url('http://localhost/Movie_Streaming_Web_App/Server/api/movie/<?php echo $movie['poster_url'] ?>');">
+                    <div class="flex flex-col items-center justify-center text-white bg-gray-200 p-4 h-64  bg-cover bg-center" style="background-image: url('http://localhost/Movie_Streaming_Web_App/Server/api/movie/<?php echo $movie['poster_url'] ?>');">
                         <button id="play-btn" class=" hidden group-hover:block outline-none border-0"><img class="h-20" src="../images/play.png" alt="" srcset=""></button>
                     </div>
-                    <p><?php echo $movie['title']; ?></p>
-                    <p><?php echo $movie['released_year'] ."  " .$movie['duration']; ?></p>
+                    <p class="capitalize"><?php echo $movie['title']; ?></p>
+                    <p><?php echo $movie['released_year'] . "  " . $movie['duration']; ?></p>
                 </div>
             <?php endforeach; ?>
         </div>
