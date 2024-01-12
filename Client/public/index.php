@@ -114,7 +114,7 @@ $movie_data = $data['data'];
                             <p class="text-lg">Year: <?php echo $movie['released_year'] ?></p>
                         </div>
                         <div class="play">
-                            <a href="" class="mt-4 px-4 py-2 bg-transparent text-white font-bold rounded-2xl border border-green-600 w-24">Watch</a>
+                            <a href="../views/player/moviePlayer.php?video_link=<?php echo urlencode($movie['video_url']);?>" class="mt-4 px-4 py-2 bg-transparent text-white font-bold rounded-2xl border border-green-600 w-24">Watch</a>
                             <a href="../views/player/movieTrailer.php?trailer=<?php echo urlencode($movie['trailer']);?>" class="mt-4 px-4 py-2 bg-transparent text-white font-bold rounded-2xl border border-green-600 w-24">Trailer</a>
                         </div>
                     </div>
@@ -143,6 +143,9 @@ $movie_data = $data['data'];
         </div>
     </div>
     <?php include './components/footer.php'; ?>
+
+
+
     <script>
         //menu toggle button
         document.getElementById('mobile-menu-toggle').addEventListener('click', function() {

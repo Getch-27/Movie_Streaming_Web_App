@@ -13,22 +13,6 @@
                 <p>Title</p>
                 <p>year : Duration</p>
             </div>
-
-            <div class="bg-gray-200 p-4 h-64  bg-cover bg-center" style="background-image: url('../images/it.jpg');">
-
-            </div>
-            <div class="bg-gray-200 p-4 h-64  bg-cover bg-center" style="background-image: url('../images/jocker.jpg');">
-
-            </div>
-            <div class="bg-gray-200 p-4 h-64  bg-cover bg-center" style="background-image: url('../images/Demon Slayer.jpg');">
-
-            </div>
-            <div class="bg-gray-200 p-4 h-64  bg-cover bg-center" style="background-image: url('../images/supermario.jpg');">
-
-            </div>
-            <div class="bg-gray-200 p-4 h-64  bg-cover bg-center" style="background-image: url('../images/mimo.jpg');">
-
-            </div>
         </div>
     </div>
 
