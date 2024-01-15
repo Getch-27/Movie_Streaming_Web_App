@@ -6,7 +6,7 @@ class Database {
     private $db_name = 'movie_streaming_db';
     private $username = 'getch1';
     private $password = '123';
-    public $conn;
+    protected $conn;
 
     // function to establish connection
     public function connect() {

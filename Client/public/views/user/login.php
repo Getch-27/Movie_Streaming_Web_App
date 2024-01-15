@@ -1,4 +1,5 @@
 <?php
+session_start();
 if (isset($_POST["username"]) && $_POST["password"]) {
     $username = $_POST["username"];
     $password = $_POST["password"];
@@ -32,7 +33,9 @@ if (isset($_POST["username"]) && $_POST["password"]) {
 
     if ($httpStatus == 200) {
         // Successful response
-         header('location:../../index.php');
+         $_SESSION['is_user_logged_in'] = true;
+         print_r($response);
+        //  header('location:../../index.php');
     } else {
         // Handle error based on the status code
         echo 'Request failed with status code: ' . $httpStatus;
