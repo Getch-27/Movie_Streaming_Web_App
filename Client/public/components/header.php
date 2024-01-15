@@ -1,7 +1,8 @@
 <?php
+session_start();
 // Determine the current page
 $currentPage = basename($_SERVER['PHP_SELF']);
-if($currentPage == 'index.php') {
+if ($currentPage == 'index.php') {
     $currentPage = 'home.php';
 }
 // Define menu items
@@ -23,7 +24,7 @@ $menuItems = array(
         array('text' => 'Animation', 'url' => '../views/search/genre.php?genre=animation'),
         array('text' => 'Adventure', 'url' => '../views/search/genre.php?genre=adventure'),
         array('text' => 'Crime', 'url' => '../views/search/genre.php?genre=crime'),
-       
+
     )),
     //year array
     array('text' => 'Year', 'url' => '#', 'submenu' => array())
@@ -117,7 +118,6 @@ for ($year = 2003; $year <= 2023; $year++) {
 </head>
 
 <body class="font-sans bg-gray-500">
-
     <!-- Navbar -->
     <nav class=" bg-gray-800 h-20 flex items-center bg-clip-padding backdrop-filter backdrop-blur-3xl bg-opacity-50 shadow-lg absolute z-50 w-full ">
         <div class="container mx-auto flex justify-between items-center">
@@ -190,7 +190,7 @@ for ($year = 2003; $year <= 2023; $year++) {
                     <!-- if its genre array loop -->
                     <?php if ($item['text'] === 'Genre') : ?>
                         <div class="dropdown">
-                            <a href="#" class="dropbtn <?php echo ($currentPage == "genre.php") ? ' active': ''; ?>">Genre </a>
+                            <a href="#" class="dropbtn <?php echo ($currentPage == "genre.php") ? ' active' : ''; ?>">Genre </a>
                             <div class="submenu dropdown-content pt-8 bg-transparent">
                                 <?php if (isset($item['submenu'])) : ?>
                                     <div class=" bg-gray-900  h-56 grid grid-cols-4 mt-0 bg-opacity-75 dropdown-content rounded-lg shadow-lg">
@@ -230,8 +230,12 @@ for ($year = 2003; $year <= 2023; $year++) {
                 <button type="submit" class="search-button"><img class="h-8" src="../images/search.png" alt="" srcset=""></button>
             </form>
             <div class="hidden lg:flex space-x-4">
-                <a href="../../public/views/user/login.php" class=" px-4 py-2 bg-transparent text-white font-bold rounded-2xl border border-green-600 w-24">Login</a>
-                <a href="../../public/views/user/signin.php" class=" px-4 py-2 bg-transparent text-white font-bold rounded-2xl border border-green-600 w-24">Signup</a>
+                <?php if ($_SESSION['is_user_logged_in'] == true) : ?>
+                    <a href="../../public/views/user/login.php" class=" px-4 py-2 bg-transparent text-white font-bold rounded-2xl border border-green-600 w-24">Logout</a>
+                <?php else : ?>
+                    <a href="../../public/views/user/login.php" class=" px-4 py-2 bg-transparent text-white font-bold rounded-2xl border border-green-600 w-24">Login</a>
+                    <a href="../../public/views/user/signin.php" class=" px-4 py-2 bg-transparent text-white font-bold rounded-2xl border border-green-600 w-24">Signup</a>
+                <?php endif; ?>
             </div>
 
             <!-- Menu Button -->

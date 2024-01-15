@@ -6,7 +6,7 @@ class UserController extends User
     private $creator;
     //pass username and password to creator model
     public function userlogin($data){
-         $data = array("username" => $data);
+         $data = $this->login($data);
          return $data;
     }
 }

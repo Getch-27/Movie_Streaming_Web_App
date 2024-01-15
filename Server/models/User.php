@@ -10,9 +10,10 @@ class User extends Database {
 
     // Method to perform user login
     protected function login($userData ) {
+        
         $this->mysqli = $this->connect();
-        $this->username = $userData['username'];
-        $this->password = $userData['password'];
+        $this->username = $userData->username;
+        $this->password = $userData->password;
 
         // Query to check if the user exists
         $query = "SELECT * FROM " . $this->table . " WHERE username = :username AND password = :password";

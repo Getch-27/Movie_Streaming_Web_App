@@ -19,8 +19,8 @@ if (isset($_POST["username"]) && $_POST["password"]) {
         'Content-Type: application/json',            // Adjust content type
     ]);
     // Execute cURL session and capture the response
-    $response = curl_exec($ch);
-
+    $response = json_decode(curl_exec($ch), true);
+    $userData = $response['user'];
     // Check for errors
     if (curl_errno($ch)) {
         echo 'cURL error: ' . curl_error($ch);
@@ -32,10 +32,12 @@ if (isset($_POST["username"]) && $_POST["password"]) {
     $httpStatus = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 
     if ($httpStatus == 200) {
-        // Successful response
+        //Successful response
          $_SESSION['is_user_logged_in'] = true;
-         print_r($response);
-        //  header('location:../../index.php');
+         $_SESSION['username'] = $userData['username'];
+         $_SESSION['user_id'] = $userData['user_id'];
+         $_SESSION['email'] = $userData['email'];
+         header('location:../../index.php');
     } else {
         // Handle error based on the status code
         echo 'Request failed with status code: ' . $httpStatus;
