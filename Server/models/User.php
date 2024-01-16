@@ -3,6 +3,8 @@ include_once("../../config/Database.php");
 class User extends Database
 {
     private $mysqli;
+    private $user_id;
+    private $movie_id;
     private $table = "user";
     private $username;
     private $password;
@@ -50,6 +52,21 @@ class User extends Database
         if ($regStmt->execute()) {
             return true;
         } else {
+            return false;
+        }
+    }
+    // method to add fovariate movie information
+    protected function addFavorite($data){
+        $this->mysqli = $this->connect();
+        $this->user_id = $data->user_id;
+        $this->movie_id = $data->movie_id;
+        $query="INSERT INTO watch_list (user_id, movie_id) VALUES (:user_id, :movie_id)";
+        $stmt = $this->mysqli->prepare($query);
+        $stmt->bindParam(":user_id", $this->user_id);
+        $stmt->bindParam(":movie_id", $this->movie_id);
+        if($stmt->execute()){
+            return true;
+        }else{
             return false;
         }
     }

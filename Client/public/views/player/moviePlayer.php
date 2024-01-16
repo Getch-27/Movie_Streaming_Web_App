@@ -64,7 +64,7 @@ if (isset($_GET["movie_id"])) {
         <p class=" col-span-3"> <?php echo "Genre : " . $movie_data['genre_names'] ?></p>
         <p class=" col-span-3"> <?php echo "Released Year : " . $movie_data['released_year'] ?></p>
         <div class=" col-span-3 grid grid-cols-2 h-10">
-            <a type="button" href="http://" class="mt-4 px-4 py-2 bg-transparent text-white font-bold rounded-2xl border border-green-600 w-24">Add to feverite</a>
+            <button type="button"  id="addToFavoriteBtn" data-movie-id=<?php echo $movie_data['movie_id'] ?> class="mt-4 px-4 py-2 bg-transparent text-white font-bold rounded-2xl border border-green-600 w-24">Add to Favorite</button>
             <a href="http://" class="mt-4 px-4 py-2 bg-transparent text-white font-bold rounded-2xl border border-green-600 w-24">Trailer</a>
         </div>
     </div>
@@ -75,48 +75,38 @@ if (isset($_GET["movie_id"])) {
     <h1 class=" text-3xl  ml-4 mb-4 text-white border-b-2 w-8 pt-4">Recomendations</h1>
     <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 mx-2">
         <?php foreach ($movieRecomserch as $movieRec) : ?>
-            <?php films($movieRec,$movie_data['movie_id']) ?>
+            <?php films($movieRec, $movie_data['movie_id']) ?>
         <?php endforeach; ?>
     </div>
 </div>
 
-
 <script>
-    // JavaScript to handle play/pause functionality
-    const video = document.getElementById('myVideo');
-    const playButton = document.getElementById('playButton');
-    $.event.special.touchstart = {
-        setup: function(_, ns, handle) {
-            this.addEventListener("touchstart", handle, {
-                passive: false
+    $(document).ready(function() {
+        $("#addToFavoriteBtn").click(function(e) {
+            e.preventDefault();
+
+            // Get the movie ID and user ID
+            var movieId = $(this).data("movie-id");
+            var userId = <?php echo isset($_SESSION['user_id']) ? $_SESSION['user_id'] : 1; ?>;
+
+            if (!userId) {
+                alert("User not logged in.");
+                return;
+            }
+
+            // Make AJAX request to your PHP script
+            $.ajax({
+                type: "POST",
+                url: "http://localhost/Movie_Streaming_Web_App/client/public/views/user/addtofavorite.php",
+                data: { movie_id: movieId, user_id: userId },
+                success: function(response) {
+                    alert("Successfully added to favorites!");
+                },
+                error: function(xhr, status, error) {
+                    alert("Errorrr: " + xhr.responseText);
+                }
             });
-        },
-    };
-
-    $.event.special.touchmove = {
-        setup: function(_, ns, handle) {
-            this.addEventListener("touchmove", handle, {
-                passive: false
-            });
-        },
-    };
-    video.addEventListener('mouseenter', () => {
-        playButton.classList.remove('hidden');
-    });
-
-    video.addEventListener('mouseleave', () => {
-        playButton.classList.add('hidden');
-    });
-
-
-    playButton.addEventListener('click', () => {
-        if (video.paused) {
-            video.play();
-            playButton.innerHTML = '<img src="../../images/pause.svg" alt="" srcset="" class =" w-16 h-16"> ';
-        } else {
-            video.pause();
-            playButton.innerHTML = '<img src="../../images/play.svg" alt="" srcset="" class =" w-16 h-16">';
-        }
+        });
     });
 </script>
 

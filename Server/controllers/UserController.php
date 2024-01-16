@@ -12,4 +12,7 @@ class UserController extends User
     public function register($data){
         return $this->register($data);
     }
+    public function addToFavorite($watch_list_data){
+        return $this->addFavorite($watch_list_data);
+    }
 }
