@@ -9,5 +9,7 @@ class UserController extends User
          $data = $this->login($data);
          return $data;
     }
+    public function register($data){
+        return $this->register($data);
+    }
 }
-?>

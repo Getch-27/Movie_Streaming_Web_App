@@ -1,5 +1,4 @@
 <?php
-
 if (isset($_POST["username"]) && $_POST["password"]) {
     $username = $_POST["username"];
     $password = $_POST["password"];
@@ -38,6 +37,8 @@ if (isset($_POST["username"]) && $_POST["password"]) {
          $_SESSION['user_id'] = $userData['user_id'];
          $_SESSION['email'] = $userData['email'];
          header('location:../../index.php');
+         
+        
     } else {
         // Handle error based on the status code
         echo 'Request failed with status code: ' . $httpStatus;

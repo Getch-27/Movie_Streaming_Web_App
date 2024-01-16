@@ -100,7 +100,7 @@ $movie_data = $data['data'];
 
 <body>
     <!-- hero section start-->
-    <?php include_once("./components/header.php") ?>
+    <?php include_once("./components/header.php");?>
     <div class="owl-carousel shadow-lg relative ">
         <?php foreach ($movie_data as $movie) : ?>
             <div class="relative h-screen bg-cover bg-center" style="background-image: url('http://localhost/Movie_Streaming_Web_App/Server/api/movie/<?php echo $movie['poster_url'] ?>');">
@@ -114,7 +114,7 @@ $movie_data = $data['data'];
                             <p class="text-lg">Year: <?php echo $movie['released_year'] ?></p>
                         </div>
                         <div class="play">
-                            <a href="../views/player/moviePlayer.php?video_link=<?php echo urlencode($movie['video_url']);?>" class="mt-4 px-4 py-2 bg-transparent text-white font-bold rounded-2xl border border-green-600 w-24">Watch</a>
+                            <a href="../views/player/moviePlayer.php?movie_id=<?php echo $movie['movie_id'];?>" class="mt-4 px-4 py-2 bg-transparent text-white font-bold rounded-2xl border border-green-600 w-24">Watch</a>
                             <a href="../views/player/movieTrailer.php?trailer=<?php echo urlencode($movie['trailer']);?>" class="mt-4 px-4 py-2 bg-transparent text-white font-bold rounded-2xl border border-green-600 w-24">Trailer</a>
                         </div>
                     </div>

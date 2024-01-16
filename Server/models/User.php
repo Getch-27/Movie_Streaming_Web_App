@@ -1,7 +1,8 @@
 <?php
 include_once("../../config/Database.php");
-class User extends Database {
-    private $mysqli; 
+class User extends Database
+{
+    private $mysqli;
     private $table = "user";
     private $username;
     private $password;
@@ -9,8 +10,9 @@ class User extends Database {
 
 
     // Method to perform user login
-    protected function login($userData ) {
-        
+    protected function login($userData)
+    {
+
         $this->mysqli = $this->connect();
         $this->username = $userData->username;
         $this->password = $userData->password;
@@ -28,13 +30,27 @@ class User extends Database {
         // Execute the query
         $stmt->execute();
 
-        // Return user data or null if not found
+        // Return 
         return $stmt;
     }
 
-    // Method to register a new user (you can implement this)
-    protected function register($username, $password, $email) {
-        // Implement the user registration logic here
+    // Method to register a new user 
+    protected function register($userData)
+    {
+        // Implement the user registration 
+        $this->mysqli = $this->connect();
+        $this->email = $userData->email;
+        $this->username = $userData->username;
+        $this->password = $userData->password;
+        $query = "INSERT INTO user (email, username, password) VALUES (:email, :username, :password)";
+        $regStmt = $this->mysqli->prepare($query);
+        $regStmt->bindParam(':email', $this->email);
+        $regStmt->bindParam(':username', $this->username);
+        $regStmt->bindParam(':password', $this->password);
+        if ($regStmt->execute()) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
-?>

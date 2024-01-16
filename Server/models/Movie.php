@@ -38,6 +38,9 @@ class Movie
     {
         $this->search_key = $key;
         switch ($mode) {
+            case 'id':
+                $this->search_mode = 'movie_id';
+                break;
             case 'genre':
                 $this->search_mode = 'genre_name';
                 break;
