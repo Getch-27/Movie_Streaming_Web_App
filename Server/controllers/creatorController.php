@@ -1,5 +1,6 @@
 <?php
-class CreatorController
+include_once("../models/Creator.php");
+class CreatorController extends Creator
 {
     private $creator;
     // create a new creator objectand pass connection
@@ -10,8 +11,7 @@ class CreatorController
     //pass username and password to creator model
     public function login($data)
     {
-        $username = $data->username;
-        $password = $data->password;
-        return $this->creator->login($username, $password);
+        
+        return $this->creator->creatorLogin($data);
     }
 }

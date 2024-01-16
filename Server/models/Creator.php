@@ -1,25 +1,21 @@
 <?php
-class Creator
+include_once("../config/Database.php");
+class Creator extends Database
 {
-    private $conn;
+    private $mysqli;
     private $table = "creator";
     private $username;
     private $password;
     private $email;
-    //assign db connection to use
-    public function __construct($db)
-    {
-        $this->conn = $db;
-    }
 
-    public function login($username, $password)
-    {
-        $this->username = $username;
-        $this->password = $password;
+    public function creatorLogin($data)
+    {   $this->mysqli = $this->connect();
+        $this->username = $data->username;
+        $this->password = $data->password;
         // the creator login 
         $query = "SELECT * FROM " . $this->table . " WHERE username = '" . $this->username . "' AND password = '" . $this->password . "'";
 
-        $stmt = $this->conn->prepare($query);
+        $stmt = $this->mysqli->prepare($query);
         // $stmt->bindParam(':movie_id', $this->movie_id);
         $stmt->execute();
 
