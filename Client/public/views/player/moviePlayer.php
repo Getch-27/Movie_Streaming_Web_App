@@ -55,7 +55,7 @@ if (isset($_GET["movie_id"])) {
         </video>
     </div>
     <div class=" col-span-2 bg-gray-800 grid grid-cols-3 p-5 rounded-md shadow-2xl">
-        <h1 class=" text-4xl font-semibold text-gray-500 col-span-3"><?php echo $movie_data['title'] ?></h1>
+        <h1 class=" text-3xl font-semibold text-gray-500 col-span-3"><?php echo $movie_data['title'] ?></h1>
         <div class=" col-span-1 grid grid-cols-2">
             <p><?php echo $movie_data['rating'] ?></p>
             <p><?php echo $movie_data['duration'] ?></p>
@@ -64,7 +64,7 @@ if (isset($_GET["movie_id"])) {
         <p class=" col-span-3"> <?php echo "Genre : " . $movie_data['genre_names'] ?></p>
         <p class=" col-span-3"> <?php echo "Released Year : " . $movie_data['released_year'] ?></p>
         <div class=" col-span-3 grid grid-cols-2 h-10">
-            <button type="button"  id="addToFavoriteBtn" data-movie-id=<?php echo $movie_data['movie_id'] ?> class="mt-4 px-4 py-2 bg-transparent text-white font-bold rounded-2xl border border-green-600 w-24">Add to Favorite</button>
+            <button type="button"  id="addToFavoriteBtn" data-movie-id=<?php echo $movie_data['movie_id'] ?> class="mt-4 px-2 h-12 py-2 bg-transparent text-white font-bold rounded-2xl border border-green-600 w-24">Favorite</button>
             <a href="http://" class="mt-4 px-4 py-2 bg-transparent text-white font-bold rounded-2xl border border-green-600 w-24">Trailer</a>
         </div>
     </div>
