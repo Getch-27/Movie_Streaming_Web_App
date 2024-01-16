@@ -4,8 +4,8 @@ class Database {
     //variable name for database
     private $host = 'localhost';
     private $db_name = 'movie_streaming_db';
-    private $username = 'getch1';
-    private $password = '123';
+    private $username = 'root';
+    private $password = '';
     protected $conn;
 
     // function to establish connection
