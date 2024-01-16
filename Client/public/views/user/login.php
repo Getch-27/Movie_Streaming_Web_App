@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 if (isset($_POST["username"]) && $_POST["password"]) {
     $username = $_POST["username"];
     $password = $_POST["password"];
@@ -45,19 +45,8 @@ if (isset($_POST["username"]) && $_POST["password"]) {
     }
 }
 ?>
-
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../styles.css">
-    <title>Document</title>
-</head>
-
-<body class="flex flex-col items-center justify-center w-screen h-screen bg-gradient-to-tl from-green-900 to-gray-900 text-gray-700">
+<?php include_once("../../components/header.php")?>
+<div class="flex flex-col items-center justify-center w-screen h-screen bg-gradient-to-tl from-green-900 to-gray-900 text-gray-700">
 
     <!-- Component Start -->
     <h1 class="font-bold text-2xl">User Login</h1>
@@ -70,6 +59,4 @@ if (isset($_POST["username"]) && $_POST["password"]) {
     </form>
     <!-- Component End  -->
 
-</body>
-
-</html>
+<?php include_once("../../components/header.php")?>

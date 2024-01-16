@@ -1,5 +1,5 @@
 <?php
-session_start();
+// session_start();
 // Determine the current page
 $currentPage = basename($_SERVER['PHP_SELF']);
 if ($currentPage == 'index.php') {
