@@ -31,3 +31,19 @@
         <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aliquid, aperiam distinctio repellendus, soluta iure nam autem numquam ab fuga velit ipsa harum illo atque, voluptatum ipsam delectus reprehenderit temporibus commodi.</p>
     </div>
 </footer>
+<script>
+    //play button
+    $(document).ready(function() {
+            // Attach hover event to all div elements with class 'group'
+            $('.group').hover(
+                function() {
+                    // Mouse over
+                    $(this).find('a').show();
+                },
+                function() {
+                    // Mouse out
+                    $(this).find('a').hide();
+                }
+            );
+        });
+</script>

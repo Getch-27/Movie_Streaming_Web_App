@@ -105,7 +105,7 @@ $movie_data = $data['data'];
     <?php include_once("./components/header.php"); ?>
     <div class="owl-carousel shadow-lg relative ">
         <?php foreach ($movie_data as $movie) : ?>
-            <div class="relative h-screen bg-cover bg-center" style="background-image: url('http://localhost/Movie_Streaming_Web_App/Server/api/movie/<?php echo $movie['poster_url'] ?>');">
+            <div class="relative h-screen bg-cover bg-center " style="background-image: url('http://localhost/Movie_Streaming_Web_App/Server/api/movie/<?php echo $movie['poster_url'] ?>');">
                 <div class="absolute inset-0 bg-gradient-to-r from-black to-transparent opacity-75 flex flex-col items-start justify-center h-screen">
                     <div class=" h-[50%]  mt-32  ml-8">
                         <h2 class=" text-4xl font-bold mb-2 text-white capitalize" id="movie-title"> <?php echo $movie['title'] ?></h2>
@@ -180,18 +180,6 @@ $movie_data = $data['data'];
             autoplay: true,
             nav: false,
             dots: false,
-        });
-
-        //play button
-        const parent = document.getElementById('poster-container');
-        const child = document.getElementById('play-btn');
-
-        parent.addEventListener('mouseenter', () => {
-            child.classList.remove('hidden');
-        });
-
-        parent.addEventListener('mouseleave', () => {
-            child.classList.add('hidden');
         });
     </script>
 </body>
