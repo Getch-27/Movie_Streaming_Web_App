@@ -3,9 +3,9 @@
 // Keep track of rendered movie IDs
 $renderedMovieIds = array();
 
-function searchMovies($label)
+function searchMovies($genre)
 {
-    $key = $label;
+    $key = $genre;
     $mode = 'genre';
     $apiEndpoint = 'http://localhost/Movie_Streaming_Web_App/Server/api/movie/searchMovie.php';
     $data = array(
@@ -71,9 +71,9 @@ function renderMovie($movie, $id)
     }
 }
 
-function films($label,$id)
+function films($genre,$id)
 {
-    $movierec_data = searchMovies($label, $id);
+    $movierec_data = searchMovies($genre);
 
     if ($movierec_data) {
         foreach ($movierec_data as $movie) {

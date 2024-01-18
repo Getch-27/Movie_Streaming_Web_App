@@ -1,4 +1,5 @@
 <?php
+session_start();
 if (isset($_POST["username"]) && $_POST["password"]) {
     $username = $_POST["username"];
     $password = $_POST["password"];
@@ -32,6 +33,8 @@ if (isset($_POST["username"]) && $_POST["password"]) {
 
     if ($httpStatus == 200) {
         // Successful response
+        $_SESSION['is_loged_in'] = true;
+        $_SESSION[''] = $row[''];
          header('location:uploadMovie.php');
     } else {
         // Handle error based on the status code

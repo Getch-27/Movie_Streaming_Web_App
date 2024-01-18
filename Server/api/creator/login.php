@@ -8,7 +8,7 @@ $data = json_decode(file_get_contents("php://input"));
 if ($data) {
     //send the connection to $creator controller
     $creator = new CreatorController();
-    $result = $creator->login($data);
+    $result = $creator->controllogin($data);
     if ($result->rowCount() > 0) {
         $row = $result->fetch(PDO::FETCH_ASSOC);
         // return JSON response with user data

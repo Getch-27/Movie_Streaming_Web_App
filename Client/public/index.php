@@ -100,6 +100,7 @@ $movie_data = $data['data'];
 
 <body>
     <!-- hero section start-->
+    <?php session_start();?>
     <?php include_once("./components/header.php");?>
     <div class="owl-carousel shadow-lg relative ">
         <?php foreach ($movie_data as $movie) : ?>
@@ -124,7 +125,7 @@ $movie_data = $data['data'];
     </div>
     <!--hero section end -->
 
-
+  
     <!-- treding section start -->
     <div class=" w-full h-full bg-gradient-to-tl from-green-900 to-gray-900">
         <h1 class=" text-3xl  ml-4 mb-4 text-white border-b-2 w-8 pt-4">Treding</h1>

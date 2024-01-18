@@ -1,5 +1,4 @@
 <?php
-session_start(); 
 // Determine the current page
 $currentPage = basename($_SERVER['PHP_SELF']);
 if ($currentPage == 'index.php') {
@@ -230,7 +229,7 @@ for ($year = 2003; $year <= 2023; $year++) {
                 <button type="submit" class="search-button"><img class="h-8" src="../images/search.png" alt="" srcset=""></button>
             </form>
             <div class="hidden lg:flex space-x-4">
-                <?php if (isset($_SESSION['is_user_logged_in']) && $_SESSION['is_user_logged_in'] == true) : ?>
+                <?php if (isset($_SESSION['is_user_logged_in'])) : ?>
                     <a href="../../public/views/user/logout.php" class=" px-4 py-2 bg-transparent text-white font-bold rounded-2xl border border-green-600 w-24">Logout</a>
                 <?php else : ?>
                     <a href="../../public/views/user/login.php" class=" px-4 py-2 bg-transparent text-white font-bold rounded-2xl border border-green-600 w-24">Login</a>
