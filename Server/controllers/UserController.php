@@ -15,4 +15,8 @@ class UserController extends User
     public function addToFavorite($watch_list_data){
         return $this->addFavorite($watch_list_data);
     }
+    public function getWathlists($id){
+        $user_id =$id->user_id;
+        return $this->movieWathlists($user_id);
+    }
 }

@@ -70,4 +70,23 @@ class User extends Database
             return false;
         }
     }
+    protected function movieWathlists($id){
+        $this->mysqli = $this->connect();
+        $this->user_id = $id;
+
+        $query = "SELECT movie.*, GROUP_CONCAT(genre.genre_name) AS genre_names
+        FROM movie
+        JOIN watch_list ON movie.movie_id = watch_list.movie_id
+        JOIN movie_genres ON movie.movie_id = movie_genres.movie_id
+        JOIN genre ON movie_genres.genre_id = genre.genre_id
+        WHERE watch_list.user_id = :user_id
+        GROUP BY movie.movie_id;";
+
+        $stmt = $this->mysqli->prepare($query);
+        $stmt->bindParam(':user_id', $this->user_id);
+        $stmt->execute();
+        //->fetch(PDO::FETCH_ASSOC)
+
+        return $stmt;
+    }
 }

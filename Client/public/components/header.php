@@ -8,7 +8,7 @@ if ($currentPage == 'index.php') {
 $menuItems = array(
     array('text' => 'Home', 'url' => '../index.php'),
     array('text' => 'Movies', 'url' => '../views/search/movies.php'),
-    array('text' => 'Recently Added', 'url' => 'recently.php'),
+    array('text' => 'Favorites', 'url' => '../views/user/watchlist.php'),
     //genre array
     array('text' => 'Genre', 'url' => '#', 'submenu' => array(
         array('text' => 'Action', 'url' => '../views/search/genre.php?genre=action'),

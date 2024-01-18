@@ -44,9 +44,8 @@ if (isset($_GET["movie_id"])) {
 }
 ?>
 
-
-
-<?php include_once("../../components/header.php") ?>
+<?php session_start(); include_once("../../components/header.php");?>
+ 
 <div class=" grid grid-cols-6 py-32">
     <div style="max-width: 760px;" class=" mx-auto col-span-4  bg-black rounded-md shadow-md overflow-hidden">
         <video id="myVideo" class="w-full" controls>
@@ -87,7 +86,7 @@ if (isset($_GET["movie_id"])) {
 
             // Get the movie ID and user ID
             var movieId = $(this).data("movie-id");
-            var userId = <?php echo isset($_SESSION['user_id']) ? $_SESSION['user_id'] : 1; ?>;
+            var userId = <?php echo isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null; ?>;
 
             if (!userId) {
                 alert("User not logged in.");
