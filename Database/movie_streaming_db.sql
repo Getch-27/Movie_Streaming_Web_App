@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 08, 2024 at 01:40 PM
+-- Generation Time: Jan 18, 2024 at 10:19 PM
 -- Server version: 10.4.28-MariaDB
--- PHP Version: 8.0.28
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,6 +20,26 @@ SET time_zone = "+00:00";
 --
 -- Database: `movie_streaming_db`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admin`
+--
+
+CREATE TABLE `admin` (
+  `admin_id` int(11) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`admin_id`, `email`, `username`, `password`) VALUES
+(1, 'admin@gmial.com', 'admin', '1');
 
 -- --------------------------------------------------------
 
@@ -97,12 +117,10 @@ CREATE TABLE `movie` (
 --
 
 INSERT INTO `movie` (`movie_id`, `title`, `rating`, `released_year`, `duration`, `description`, `video_url`, `poster_url`, `trailer`) VALUES
-(1, 'The Creator', 7.13, '2023', '134', 'Amid a future war between the human race and the forces of artificial intelligence, a hardened ex-special forces agent grieving the disappearance of his wife, is recruited to hunt down and kill the Creator, the elusive architect of advanced AI who has dev', 'abab', 'adda', 'https://www.youtube.com/watch?v=ex3C1-5Dhb8'),
-(4, 'The Creator', 7.13, '2023', '134', 'Amid a future war between the human race and the forces of artificial intelligence, a hardened ex-special forces agent grieving the disappearance of his wife, is recruited to hunt down and kill the Creator, the elusive architect of advanced AI who has dev', 'abab', 'adda', 'https://www.youtube.com/watch?v=ex3C1-5Dhb8'),
-(74, 'shsjh', 0, 'fghj', 'sdssd', 'sdasdss', 'uploads/2798. Number of Employees Who Met the Target (Leetcode Easy).mp4', 'uploads/posterai-brain.png', 'sdds'),
-(75, '', 0, '', '', '', 'uploads/the.mp4', 'uploads/posterconnect.png', ''),
-(76, '', 0, '', '', '', 'uploads/the.mp4', 'uploads/posterconnect.png', ''),
-(77, 'zXVzvzvx', 0, 'ZXVzV', 'zxv', 'zvzXV', 'uploads/the.mp4', 'uploads/posterflask.png', 'ZXV');
+(78, 'Finding Nemo', 8.2, '2003', '1h 40m', 'After his son is captured in the Great Barrier Reef and taken to Sydney, a timid clownfish sets out on a journey to bring him home.', 'uploads/Finding Nemo - 2003.mp4', 'uploads/poster/mimo.jpg', '2zLkasScy7A?si=00eVEkFr20bZaOvS'),
+(79, 'Rebel Moon - Part One: A Child of Fire', 5.6, '2023', '2h 13m', 'When a peaceful settlement on the edge of a distant moon finds itself threatened by the armies of a tyrannical ruling force, a mysterious stranger living among its villagers becomes their best hope for survival.', 'uploads/Rebel Moon.mp4', 'uploads/poster/reble moon.jpeg', 'fhr3MzT6exg?si=F2Z89W8gTBtN95S0'),
+(80, 'the creator', 6.8, '2023', '2h 13m', 'Against the backdrop of a war between humans and robots with artificial intelligence, a former soldier finds the secret weapon, a robot in the form of a young child.', 'uploads/The Creator 2023.mp4', 'uploads/poster/the creator.jpeg', 'ex3C1-5Dhb8?si=Rcw8kl6DtOaiwz37'),
+(81, 'Black Panther', 7.3, '2018', '2h 14m', 'T\'Challa, heir to the hidden but advanced kingdom of Wakanda, must step forward to lead his people into a new future and must confront a challenger from his country\'s past.', 'uploads/Black Panther.mp4', 'uploads/poster/black panther.jpg', 'xjDjIWPwcPU?si=4pC_6tXC7krP5_tE');
 
 -- --------------------------------------------------------
 
@@ -120,20 +138,71 @@ CREATE TABLE `movie_genres` (
 --
 
 INSERT INTO `movie_genres` (`movie_id`, `genre_id`) VALUES
-(1, 1),
-(1, 2),
-(1, 3),
-(4, 4),
-(4, 5),
-(4, 6),
-(74, 2),
-(74, 7),
-(74, 8),
-(77, 1);
+(78, 2),
+(78, 3),
+(78, 4),
+(79, 1),
+(79, 2),
+(79, 6),
+(80, 1),
+(80, 2),
+(80, 6),
+(81, 1),
+(81, 2),
+(81, 11);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user`
+--
+
+CREATE TABLE `user` (
+  `user_id` int(11) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`user_id`, `email`, `username`, `password`) VALUES
+(1, 'getahunfikadurcde@gmail.com', 'getch', '1'),
+(2, 'jo@gmail.com', 'jo', '1'),
+(3, '1@1', 'we', 'we');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `watch_list`
+--
+
+CREATE TABLE `watch_list` (
+  `watch_list_id` int(11) NOT NULL,
+  `movie_id` int(11) DEFAULT NULL,
+  `user_id` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `watch_list`
+--
+
+INSERT INTO `watch_list` (`watch_list_id`, `movie_id`, `user_id`) VALUES
+(5, 78, 1),
+(6, 79, 2),
+(7, 80, 1);
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `admin`
+--
+ALTER TABLE `admin`
+  ADD PRIMARY KEY (`admin_id`);
 
 --
 -- Indexes for table `creator`
@@ -161,8 +230,28 @@ ALTER TABLE `movie_genres`
   ADD KEY `genre_id` (`genre_id`);
 
 --
+-- Indexes for table `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`user_id`);
+
+--
+-- Indexes for table `watch_list`
+--
+ALTER TABLE `watch_list`
+  ADD PRIMARY KEY (`watch_list_id`),
+  ADD KEY `movie_id` (`movie_id`),
+  ADD KEY `user_id` (`user_id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `admin`
+--
+ALTER TABLE `admin`
+  MODIFY `admin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `creator`
@@ -180,7 +269,19 @@ ALTER TABLE `genre`
 -- AUTO_INCREMENT for table `movie`
 --
 ALTER TABLE `movie`
-  MODIFY `movie_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
+  MODIFY `movie_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
+
+--
+-- AUTO_INCREMENT for table `user`
+--
+ALTER TABLE `user`
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `watch_list`
+--
+ALTER TABLE `watch_list`
+  MODIFY `watch_list_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Constraints for dumped tables
@@ -192,6 +293,13 @@ ALTER TABLE `movie`
 ALTER TABLE `movie_genres`
   ADD CONSTRAINT `movie_genres_ibfk_1` FOREIGN KEY (`movie_id`) REFERENCES `movie` (`movie_id`),
   ADD CONSTRAINT `movie_genres_ibfk_2` FOREIGN KEY (`genre_id`) REFERENCES `genre` (`genre_id`);
+
+--
+-- Constraints for table `watch_list`
+--
+ALTER TABLE `watch_list`
+  ADD CONSTRAINT `watch_list_ibfk_1` FOREIGN KEY (`movie_id`) REFERENCES `movie` (`movie_id`),
+  ADD CONSTRAINT `watch_list_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

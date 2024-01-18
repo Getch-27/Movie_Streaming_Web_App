@@ -48,14 +48,14 @@ if (isset($_GET["movie_id"])) {
 include_once("../../components/header.php"); ?>
 
 <div class=" grid grid-cols-8 py-32">
-    <div style="max-width: 760px;" class=" mx-auto col-span-8 lg:col-span-5  bg-black rounded-md shadow-md overflow-hidden">
-        <video id="myVideo" class="w-full" controls>
+    <div style="width: 760px; min-height:400px;" class=" flex justify-center items-center mx-auto col-span-8 lg:col-span-5  bg-black rounded-md shadow-md overflow-hidden">
+        <video id="myVideo" class="w-full" controls autoplay>
             <source src="http://localhost/Movie_Streaming_Web_App/Server/api/movie/<?php echo $movie_data['video_url'] ?>" type="video/mp4">
             Your browser does not support the video tag.
         </video>
     </div>
-    <div class=" col-span-8 lg:col-span-3  bg-gray-800 grid grid-cols-3 p-5 mx-3 sm:pt-3 rounded-md  items-center bg-clip-padding backdrop-filter backdrop-blur-3xl bg-opacity-50 shadow-lg">
-        <h1 class=" text-3xl font-semibold text-gray-500 col-span-3"><?php echo $movie_data['title'] ?></h1>
+    <div class=" col-span-8 lg:col-span-3  bg-gray-800 grid grid-cols-3 p-5 mx-3  rounded-md  items-center bg-clip-padding backdrop-filter backdrop-blur-3xl bg-opacity-50 shadow-lg">
+        <h1 class=" text-3xl font-semibold text-gray-500 col-span-3 capitalize"><?php echo $movie_data['title'] ?></h1>
         <div class=" col-span-3 grid grid-cols-4">
             <div class="flex col-span-1 items-center">
                 <svg xmlns="http://www.w3.org/2000/svg" aria-label="IMDb" role="img" viewBox="0 0 512.00 512.00" width="34px" height="34px" fill="#000000" stroke="#000000" stroke-width="0.00512" transform="rotate(0)">
