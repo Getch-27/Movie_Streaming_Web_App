@@ -4,7 +4,6 @@ header('Content-Type: application/json');
 header('Access-Control-Allow-Methods: POST');
 include_once('../../controllers/UserController.php');
 $user_id = json_decode(file_get_contents("php://input"));
-echo "af";
 if ($user_id) {
     
     //send the connection to $creator controller

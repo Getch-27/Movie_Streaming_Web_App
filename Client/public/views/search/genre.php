@@ -43,7 +43,7 @@ if (isset($_GET["genre"])) {
 }
 ?>
 
-
+<?php session_start(); $user_id=$_SESSION['user_id'];?>
 <?php include_once("../../components/header.php") ?>
 
 

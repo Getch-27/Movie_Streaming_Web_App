@@ -1,7 +1,9 @@
 <?php
+if (isset($_GET['id'])){
+    $id = $_GET['id'];
     $apiEndpoint = 'http://localhost/Movie_Streaming_Web_App/Server/api/user/getWatchList.php';
     $data = array(
-        'user_id'=> 1,
+        'user_id'=> $id,
     );
     // cURL setup
     $ch = curl_init($apiEndpoint);
@@ -30,22 +32,21 @@
     if ($httpStatus == 200) {
         // Successful response
         $data = json_decode($response, true);
-        print_r($data) ;
-        // $movie_data = $data['data'];
+        $movie_data = $data['data'];
     } else {
         // Handle error based on the status code
         echo 'Request failed with status code: ' . $httpStatus;
         // Process $response or handle error accordingly
     }
-
+}
 ?>
-
+<?php session_start(); isset($_SESSION['user_id']) ? $user_id = $_SESSION['user_id'] : null; ?>
 <?php include_once("../../components/header.php") ?>
 
 
     <!-- treding section start -->
     <div class=" w-full h-full bg-gradient-to-tl from-green-900 to-gray-900 pt-20">
-        <h1 class=" text-3xl  ml-4 mb-4 text-white border-b-2 w-8 pt-4">Movies</h1>
+        <h1 class=" text-3xl  ml-4 mb-4 text-white border-b-2 w-8 pt-4">Your Favorite Movies</h1>
         <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 mx-2">
             <!-- grid items  -->
             <?php foreach ($movie_data as $movie) : ?>

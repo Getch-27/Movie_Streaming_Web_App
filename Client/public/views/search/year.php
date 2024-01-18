@@ -44,7 +44,7 @@ if (isset($_GET["year"])) {
 ?>
 
 
-<?php include_once("../../components/header.php") ?>
+<?php session_start(); $user_id=$_SESSION['user_id'];?>
 
 
 <!-- treding section start -->

@@ -18,7 +18,7 @@ curl_close($ch);
 $data = json_decode($response, true);
 $movie_data = $data['data'];
 ?>
-
+<?php session_start(); isset($_SESSION['user_id']) ? $user_id = $_SESSION['user_id'] : null; ?>
 <?php include_once("../../components/header.php") ?>
 
 

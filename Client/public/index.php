@@ -100,7 +100,7 @@ $movie_data = $data['data'];
 
 <body>
     <!-- hero section start-->
-    <?php session_start();?>
+    <?php session_start(); isset($_SESSION['user_id']) ? $user_id = $_SESSION['user_id'] : null; ?>
     <?php include_once("./components/header.php");?>
     <div class="owl-carousel shadow-lg relative ">
         <?php foreach ($movie_data as $movie) : ?>

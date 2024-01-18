@@ -1,4 +1,10 @@
 <?php
+if (isset($_SESSION['user_id'])){
+    $user_id = $_SESSION['user_id'];
+}else{
+    $user_id= null;
+}
+
 // Determine the current page
 $currentPage = basename($_SERVER['PHP_SELF']);
 if ($currentPage == 'index.php') {
@@ -8,7 +14,7 @@ if ($currentPage == 'index.php') {
 $menuItems = array(
     array('text' => 'Home', 'url' => '../index.php'),
     array('text' => 'Movies', 'url' => '../views/search/movies.php'),
-    array('text' => 'Favorites', 'url' => '../views/user/watchlist.php'),
+    array('text' => 'Favorites', 'url' => "../views/user/watchlist.php?id=$user_id"),
     //genre array
     array('text' => 'Genre', 'url' => '#', 'submenu' => array(
         array('text' => 'Action', 'url' => '../views/search/genre.php?genre=action'),
