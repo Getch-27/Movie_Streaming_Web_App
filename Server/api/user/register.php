@@ -8,7 +8,7 @@ if ($data) {
     
     //send the connection to $creator controller
     $userConData = new UserController();
-    $result = $userConData->register($data);
+    $result = $userConData->registerCon($data);
 
     if ($result) {
         // return JSON response with user data

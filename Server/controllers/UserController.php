@@ -9,7 +9,7 @@ class UserController extends User
          $data = $this->login($data);
          return $data;
     }
-    public function register($data){
+    public function registerCon($data){
         return $this->register($data);
     }
     public function addToFavorite($watch_list_data){
