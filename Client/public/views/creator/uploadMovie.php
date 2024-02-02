@@ -57,6 +57,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         .submenu {
             display: none;
             position: absolute;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
             z-index: 1;
         }
 
@@ -91,12 +92,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <input type="text" name="rating" aria-describedby="helper-text-explanation" class="bg-gray-50 border p-2 border-blue-500 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="8.1">
 
             </div>
-            <div >
+            <div>
                 <label for="released_year" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Released Year</label>
                 <input type="text" name="released_year" aria-describedby="helper-text-explanation" class="bg-gray-50 border p-2 border-blue-500 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="2024">
 
             </div>
-            <div >
+            <div>
                 <label for="duration" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Duration</label>
                 <input type="text" name="duration" aria-describedby="helper-text-explanation" class="bg-gray-50 border p-2 border-blue-500 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="2h 45m">
 
@@ -112,29 +113,62 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <label for="description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Description</label>
         <textarea name="description" type="text" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border p-2 border-blue-500 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Write a description..."></textarea>
         <!-- #region -->
-        <div class="dropdown ">
-            <h1 clsss="dropbtn w-4 bg-gray-900 text-lg ">Genre</h1>
-            <div class="submenu dropdown-content w-56 p-3 bg-gray-900 grid grid-cols-4 gap-3 rounded-lg shadow-sm text-gray-200">
-                <input type="checkbox" name="genres[]" value="Action">
-                <label for="actionCheckbox">Action</label>
-                <input type="checkbox" name="genres[]" value="Adventure">
-                <label for="adventureCheckbox">Adventure</label>
-                <input type="checkbox" name="genres[]" value="Animation">
-                <label for="animationCheckbox">Animation</label>
-                <input type="checkbox" name="genres[]" value="Comedy">
-                <label for="comedyCheckbox">Comedy</label>
-                <input type="checkbox" name="genres[]" value="Crime">
-                <label for="Crime">Crime</label>
-                <input type="checkbox" name="genres[]" value="Drama">
-                <label for="Drama">Drama</label>
-                <input type="checkbox" name="genres[]" value="Fantasy">
-                <label for="Fantasy">Fantasy</label>
-                <input type="checkbox" name="genres[]" value="Horror">
-                <label for="Horror">Horror</label>
-                <input type="checkbox" name="genres[]" value="Science Fiction">
-                <label for="Science Fiction">Science Fiction</label>
+        <div class="dropdown w-4">
+            <h1 clsss="bg-gray-900 text-lg">Genre</h1>
+            <div class="submenu dropdown-content pt-1 bg-transparent">
+                <div class=" bg-gray-900 p-3 text-white gap-2 grid grid-cols-3 mt-0 bg-opacity-75 dropdown-content rounded-lg shadow-lg">
+                    <div>
+                        <input type="checkbox" name="genres[]" value="Action">
+                        <label for="actionCheckbox">Action</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="genres[]" value="Adventure">
+                        <label for="adventureCheckbox">Adventure</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="genres[]" value="Animation">
+                        <label for="animationCheckbox">Animation</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="genres[]" value="Comedy">
+                        <label for="comedyCheckbox">Comedy</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="genres[]" value="Crime">
+                        <label for="Crime">Crime</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="genres[]" value="Drama">
+                        <label for="Drama">Drama</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="genres[]" value="Fantasy">
+                        <label for="Fantasy">Fantasy</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="genres[]" value="Horror">
+                        <label for="Horror">Horror</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="genres[]" value="Science Fiction">
+                        <label for="Science Fiction">Sci-Fi</label>
+                    </div>
+                </div>
             </div>
         </div>
+
+
+
+
+        <!-- <div class="dropdown ">
+            <h1 clsss="dropbtn w-4 bg-gray-900 text-lg ">Genre</h1>
+            <div class="submenu bg-gray-900 w-64  grid grid-cols-4 mt-0 bg-opacity-75 dropdown-content rounded-lg shadow-lg">
+               
+            </div>
+        </div> -->
+
+
+
         <label for="poster" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Poster</label>
         <input class="block w-full mb-5 text-sm text-gray-900 border border-gray-900 rounded-lg cursor-pointer focus:outline-none  dark:placeholder-gray-400" type="file" name="poster" accept="image/*">
         <label for="video" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Video</label>
