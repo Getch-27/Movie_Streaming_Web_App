@@ -1,26 +1,22 @@
 <?php
-class MovieController
+include('../../models/Movie.php');
+class MovieController extends Movie
 {
     private $movie;
 
-    public function __construct($db)
+    public function getAllMovieCont()
     {
-        $this->movie = new Movie($db);
+        return $this->getAllMovie();
     }
-
-    public function getAllMovie()
-    {
-        return $this->movie->getAllMovie();
-    }
-    public function searchMovies($data)
+    public function searchMoviesCont($data)
     {
         if (isset($data->mode) && isset($data->key)) {
-            return $this->movie->searchMovies($data->mode, $data->key);
+            return $this->searchMovies($data->mode, $data->key);
         } else {
             return ['message' => 'Invalid request'];
         }
     }
-    public function uploadMovie($data, $file)
+    public function uploadMovieCont($data, $file)
     {
 
         // Define the destination folder (create it if it doesn't exist)
@@ -43,7 +39,7 @@ class MovieController
 
         // Move the uploaded file to the destination folder
         if (move_uploaded_file($vidTmp, $videoPath) && move_uploaded_file($posTmp, $posterPath)) {
-           return $this->movie->uploadMovie($data ,$videoPath, $posterPath);
+           return $this->uploadMovie($data ,$videoPath, $posterPath);
              
         } else {
             

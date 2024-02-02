@@ -3,19 +3,15 @@ header('Access-Control-Allow-Origin: *');
 header('Content-Type: application/json');
 header('Access-Control-Allow-Methods: POST');
 
-include_once(__DIR__ . '../../../config/Database.php');
-include_once(__DIR__ . '../../../models/Movie.php');
-include_once(__DIR__ . '../../../controllers/MovieController.php');
+include_once('../../controllers/movieController.php');
 
 // Get the JSON data from the request body
 $data = json_decode(file_get_contents("php://input"));
 
 if ($data) {
-    $database = new Database();
-    $db = $database->connect();
-    $movieController = new MovieController($db);
-
-    $result = $movieController->searchMovies($data);
+   
+    $movieController = new MovieController();
+    $result = $movieController->searchMoviesCont($data);
     $num = $result->rowCount();
     if ($num > 0) {
         //movie array

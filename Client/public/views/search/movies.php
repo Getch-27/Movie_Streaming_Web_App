@@ -1,5 +1,5 @@
 <?php
-$apiEndpoint = 'http://localhost/Movie_Streaming_Web_App/Server/api/movie/readAll.php';
+$apiEndpoint = 'http://localhost/Movie_Streaming_Web_App/Server/api/movie/ReadAll.php';
 
 // Initialize cURL session
 $ch = curl_init();

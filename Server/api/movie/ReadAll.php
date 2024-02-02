@@ -3,19 +3,13 @@ header('Access-Control-Allow-Origin: *');
 header('Content-Type: application/json');
 
 // Adjust the paths based on the actual file structure
-include_once(__DIR__ . '../../../config/Database.php');
-include_once(__DIR__ . '../../../models/Movie.php');
 include_once(__DIR__ . '../../../controllers/MovieController.php');
-
-$database = new Database();
-$db = $database->connect();
-$movieController = new MovieController($db);
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     // $data = json_decode(file_get_contents("php://input"));
     // $movieId = isset($_GET['id']) ? $_GET['id'] : die("Invalid");
-
-    $result = $movieController->getAllMovie();
+    $movieController = new MovieController();
+    $result = $movieController->getAllMovieCont();
     $num = $result->rowCount();
     if ($num > 0) {
         //movie array
