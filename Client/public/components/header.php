@@ -29,47 +29,34 @@ curl_close($ch);
 
 // Decode the JSON response
 $data = json_decode($response, true);
-print_r($data);
-// $movie_data = $data['data'];
-
-
-
-
+$years=$data['year_list'];
+$genres = $data['genre_list'];
 
 // Define menu items
 $menuItems = array(
     array('text' => 'Home', 'url' => '../index.php'),
     array('text' => 'Movies', 'url' => '../views/search/movies.php'),
     array('text' => 'Favorites', 'url' => "../views/user/watchlist.php?id=$user_id"),
-    //genre array
-    array('text' => 'Genre', 'url' => '#', 'submenu' => array(
-        array('text' => 'Action', 'url' => '../views/search/genre.php?genre=action'),
-        array('text' => 'Comedy', 'url' => '../views/search/genre.php?genre=comedy'),
-        array('text' => 'Drama', 'url' => '../views/search/genre.php?genre=drama'),
-        array('text' => 'Horror', 'url' => '../views/search/genre.php?genre=horror'),
-        array('text' => 'Sci-Fi', 'url' => '../views/search/genre.php?genre=sci-fi'),
-        array('text' => 'Thriller', 'url' => '../views/search/genre.php?genre=thriller'),
-        array('text' => 'Romance', 'url' => '../views/search/genre.php?genre=romance'),
-        array('text' => 'Mystery', 'url' => '../views/search/genre.php?genre=mystery'),
-        array('text' => 'Fantasy', 'url' => '../views/search/genre.php?genre=fantasy'),
-        array('text' => 'Animation', 'url' => '../views/search/genre.php?genre=animation'),
-        array('text' => 'Adventure', 'url' => '../views/search/genre.php?genre=adventure'),
-        array('text' => 'Crime', 'url' => '../views/search/genre.php?genre=crime'),
 
-    )),
+    //genre array
+    array('text' => 'Genre', 'url' => '#', 'submenu' => array()),
+  
     //year array
     array('text' => 'Year', 'url' => '#', 'submenu' => array())
 );
 $menuItems[] = array('text' => 'About Us', 'url' => 'aboutUs.php');
 // Generate year array and append to the 'Year' submenu
-for ($year = 2003; $year <= 2023; $year++) {
-    $menuItems[4]['submenu'][] = array(
+foreach($genres as $genre){
+  $menuItems[3]['submenu'][] = array(
+    'text' => $genre, 'url' => '../views/search/genre.php?genre='.$genre . ''
+  );
+}
+foreach($years as $year){
+   $menuItems[4]['submenu'][] = array(
         'text' => $year,
         'url' => "../views/search/year.php?year=$year"
-    );
+    ); 
 }
-
-
 ?>
 
 <!DOCTYPE html>
@@ -224,7 +211,7 @@ for ($year = 2003; $year <= 2023; $year++) {
                             <a href="#" class="dropbtn <?php echo ($currentPage == "genre.php") ? ' active' : ''; ?>">Genre </a>
                             <div class="submenu dropdown-content pt-8 bg-transparent">
                                 <?php if (isset($item['submenu'])) : ?>
-                                    <div class=" bg-gray-900  h-56 grid grid-cols-4 mt-0 bg-opacity-75 dropdown-content rounded-lg shadow-lg">
+                                    <div class=" bg-gray-900  grid grid-cols-3 mt-0 bg-opacity-75 dropdown-content rounded-lg shadow-lg">
                                         <?php foreach ($item['submenu'] as $key => $value) : ?>
                                             <a href="<?php echo $value['url'] ?>"> <?php echo $value['text'] ?></a>
                                         <?php endforeach ?>
@@ -238,7 +225,7 @@ for ($year = 2003; $year <= 2023; $year++) {
                             <a href="#" class=" dropbtn mb-0<?php echo ($currentPage == "year.php") ? ' active' : ''; ?>">Year</a>
                             <div class="submenu dropdown-content pt-8 bg-transparent">
                                 <?php if (isset($item['submenu'])) : ?>
-                                    <div class=" bg-gray-900  h-56 grid grid-cols-5 mt-0 bg-opacity-75 dropdown-content rounded-lg shadow-lg">
+                                    <div class=" bg-gray-900 grid grid-cols-5 mt-0 bg-opacity-75 dropdown-content rounded-lg shadow-lg">
                                         <?php foreach ($item['submenu'] as $key => $value) : ?>
                                             <a href="<?php echo $value['url'] ?>"> <?php echo $value['text'] ?></a>
                                         <?php endforeach ?>

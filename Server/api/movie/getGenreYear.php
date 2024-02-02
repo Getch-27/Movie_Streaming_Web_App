@@ -12,18 +12,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     $result = $movieController->getGenreYearCont();
     $num = $result->rowCount();
     if ($num > 0) {
-        //movie array
-        $movie_arr = array();
-        $movie_arr['data'] = array();
         while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
             extract($row);
             $movie_item = array(
-                'year_list' => array(explode(',',$year_list)),
-                'genre_list' => array(explode(',',$genre_list))
+                'year_list' => explode(',',$year_list),
+                'genre_list' => explode(',',$genre_list)
             );
-            array_push($movie_arr['data'], $movie_item);
         }
-        echo json_encode($movie_arr);
+        echo json_encode($movie_item);
     } else {
         echo json_encode(array('message' => 'Movie not found'));
     }
