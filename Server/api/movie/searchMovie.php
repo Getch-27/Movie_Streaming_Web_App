@@ -42,5 +42,4 @@ if ($data) {
     http_response_code(400); // Unauthorized
     echo json_encode(['message' => 'Invalid request']);
 }
-?>
 

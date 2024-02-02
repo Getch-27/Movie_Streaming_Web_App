@@ -8,6 +8,10 @@ class MovieController extends Movie
     {
         return $this->getAllMovie();
     }
+    public function getGenreYearCont()
+    {
+        return $this->getGenreYear();
+    }
     public function searchMoviesCont($data)
     {
         if (isset($data->mode) && isset($data->key)) {
@@ -16,6 +20,7 @@ class MovieController extends Movie
             return ['message' => 'Invalid request'];
         }
     }
+    
     public function uploadMovieCont($data, $file)
     {
 

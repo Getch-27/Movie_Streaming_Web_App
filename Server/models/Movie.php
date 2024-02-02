@@ -11,11 +11,11 @@ class Movie extends Database
     private $search_mode;
     private $search_key;
 
-  
+
 
     //read all movies from database
     protected function getAllMovie()
-    {   
+    {
         $this->mysqli = $this->connect();
         $query = "SELECT m.*,
         GROUP_CONCAT(g.genre_name) AS genre_names
@@ -30,10 +30,26 @@ class Movie extends Database
 
         return $stmt;
     }
+    protected function getGenreYear()
+    {
+        $this->mysqli = $this->connect();
+        $query = "SELECT
+        GROUP_CONCAT(DISTINCT m.released_year) AS year_list,
+        GROUP_CONCAT(DISTINCT g.genre_name) AS genre_list
+        FROM movie m 
+        LEFT JOIN movie_genres mg ON m.movie_id = mg.movie_id
+        LEFT JOIN genre g ON mg.genre_id = g.genre_id;";
+        $stmt = $this->mysqli->prepare($query);
+        // $stmt->bindParam(':movie_id', $this->movie_id);
+        $stmt->execute();
+        //->fetch(PDO::FETCH_ASSOC)
+
+        return $stmt;
+    }
 
     //read same or one movie by title,genre or release year from database
     protected function searchMovies($mode, $key)
-    {   
+    {
         $this->mysqli = $this->connect();
         $this->search_key = $key;
         switch ($mode) {

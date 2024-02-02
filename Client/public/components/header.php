@@ -10,6 +10,32 @@ $currentPage = basename($_SERVER['PHP_SELF']);
 if ($currentPage == 'index.php') {
     $currentPage = 'home.php';
 }
+
+//get genre and year 
+$apiEndpoint = 'http://localhost/Movie_Streaming_Web_App/Server/api/movie/getGenreYear.php';
+
+// Initialize cURL session
+$ch = curl_init();
+
+// Set cURL options
+curl_setopt($ch, CURLOPT_URL, $apiEndpoint);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+
+// Execute cURL session and get the response
+$response = curl_exec($ch);
+
+// Close cURL session
+curl_close($ch);
+
+// Decode the JSON response
+$data = json_decode($response, true);
+print_r($data);
+// $movie_data = $data['data'];
+
+
+
+
+
 // Define menu items
 $menuItems = array(
     array('text' => 'Home', 'url' => '../index.php'),
