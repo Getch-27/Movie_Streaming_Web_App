@@ -95,7 +95,38 @@ $movie_data = $data['data'];
         .dropdown-content a:hover {
             background-color: #2d3748;
         }
+
+        .animate1 {
+            animation: wel 8s cubic-bezier(0, 0.5, 0.4, 1);
+        }
+
+        @keyframes wel {
+
+            50%,
+            70% {
+
+                opacity: 1;
+            }
+
+            70% {
+                transform: scale(2);
+                opacity: 0;
+            }
+
+            80% {
+                transform: scale(3);
+                opacity: 0;
+            }
+
+            95% {
+                transform: scale(1);
+            }
+            100% {
+                transform: scale(1.6);
+            }
+        }
     </style>
+
 </head>
 
 <body>
@@ -135,7 +166,11 @@ $movie_data = $data['data'];
         <?php endforeach; ?>
     </div>
     <!--hero section end -->
+    <section class="showcase w-full h-screen relative overflow-hidden" id="showcase">
+        <video src="http://localhost/Movie_Streaming_Web_App/Server/api/movie/<?php echo $movie_data[0]['video_url'] ?>" type="video/mp4" autoplay loop muted class=" w-full h-full absolute top-0 left-0 object-cover"></video>
+        <h1 id="wordDisplay" class=" pt-32  absolute mx-auto title min-w-full  min-h-full bg-black  text-white text-center" style="mix-blend-mode:multiply; font-size:200px;">Welcome</h1>
 
+    </section>
 
     <!-- treding section start -->
     <div class=" w-full h-full bg-gradient-to-tl from-green-900 to-gray-900">
@@ -148,6 +183,81 @@ $movie_data = $data['data'];
 
 
     <script>
+        // List of words to display
+        var wordList = ["To", "Your", "Movie", "World", "Streamly"];
+
+        // Index to keep track of the current word
+        var currentIndex = 0;
+
+        // Function to display one word at a time
+        function displayNextWord() {
+            var wordDisplayElement = document.getElementById("wordDisplay");
+
+            // Display the current word
+            wordDisplayElement.textContent = wordList[currentIndex];
+
+            // Increment the index or clear the interval if at the end
+            if (currentIndex === wordList.length - 1) {
+                clearInterval(intervalId);
+            } else {
+                currentIndex = (currentIndex + 1) % wordList.length;
+            }
+        }
+        window.addEventListener('scroll', function() {
+            let scrollPosition = window.scrollY;
+
+            // Adjust the scroll speed by multiplying the scroll position
+            // by a factor (in this case, 0.1 for a slower scroll)
+            let slowScroll = scrollPosition * 0.1;
+
+            // Normalize slowScroll to the interval [1, 2]
+            let minValue = 0; // Minimum value of slowScroll
+            let maxValue = 100; // Maximum value of slowScroll (adjust as needed)
+
+            // Ensure slowScroll is within the specified range
+            slowScroll = Math.max(minValue, Math.min(maxValue, slowScroll));
+
+            // Map slowScroll to the interval [1, 2]
+            let normalizedSlowScroll = 1 + slowScroll / maxValue;
+
+            // Apply the slow scroll to the specific section
+            document.getElementById('wordDisplay').style.transform = 'scale(' + ( normalizedSlowScroll) + ')';
+        });
+
+        // Function to be called when the section is in view
+        function handleSectionInView(entries, observer) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Call your function when the section is in view
+                    var intervalId = setInterval(displayNextWord, 1000);
+                    var wordDisplayElement = document.getElementById("wordDisplay");
+                    wordDisplayElement.classList.add("animate1");
+                    // Stop observing once the function is called (optional)
+                    observer.unobserve(entry.target);
+                }
+            });
+        }
+        // Create an intersection observer instance
+        const observer = new IntersectionObserver(handleSectionInView, {
+            root: null, // Use the viewport as the root
+            rootMargin: '0px', // No margin around the root
+            threshold: 0.5 // Trigger the callback when 50% of the target is visible
+        });
+
+        // Target the section you want to observe
+        const targetSection = document.getElementById('showcase');
+
+        // Start observing the target section
+        observer.observe(targetSection);
+
+        // Initial display
+
+
+
+
+
+
+
         //menu toggle button
         document.getElementById('mobile-menu-toggle').addEventListener('click', function() {
             document.getElementById('mobile-sidebar').classList.add('open');
