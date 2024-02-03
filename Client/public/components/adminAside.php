@@ -1,65 +1,30 @@
-<?php 
-$apiEndpoint = 'http://localhost/Movie_Streaming_Web_App/Server/api/movie/ReadAll.php';
+<?php
+function fetchDataFromAPI($apiEndpoint)
+{
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $apiEndpoint);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    $response = curl_exec($ch);
+    curl_close($ch);
+    return json_decode($response, true);
+}
 
-// Initialize cURL session
-$ch = curl_init();
+$apiEndpointMovies = 'http://localhost/Movie_Streaming_Web_App/Server/api/movie/ReadAll.php';
+$apiEndpointUsers = 'http://localhost/Movie_Streaming_Web_App/Server/api/user/getUsers.php';
+$apiEndpointCreators = 'http://localhost/Movie_Streaming_Web_App/Server/api/creator/getCreators.php';
 
-// Set cURL options
-curl_setopt($ch, CURLOPT_URL, $apiEndpoint);
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+// Fetch data for movies
+$dataMovies = fetchDataFromAPI($apiEndpointMovies);
+$allMovies = count($dataMovies['data']);
 
-// Execute cURL session and get the response
-$response = curl_exec($ch);
+// Fetch data for users
+$dataUsers = fetchDataFromAPI($apiEndpointUsers);
+$totalUsers = count($dataUsers['data']);
 
-// Close cURL session
-curl_close($ch);
-
-// Decode the JSON response
-$data = json_decode($response, true);
-$allMovies=count($data['data']);
-
-// users
-$apiEndpoint2 = 'http://localhost/Movie_Streaming_Web_App/Server/api/user/getUsers.php';
-
-// Initialize cURL session
-$ch = curl_init();
-
-// Set cURL options
-curl_setopt($ch, CURLOPT_URL, $apiEndpoint2);
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-
-// Execute cURL session and get the response
-$response = curl_exec($ch);
-
-// Close cURL session
-curl_close($ch);
-
-// Decode the JSON response
-$data = json_decode($response, true);
-$totalUsers = count($data['data']);
-// $allUsers=count($data['data']);
-
-//content creators
-$apiEndpoint3 = 'http://localhost/Movie_Streaming_Web_App/Server/api/creator/getCreators.php';
-
-// Initialize cURL session
-$ch = curl_init();
-
-// Set cURL options
-curl_setopt($ch, CURLOPT_URL, $apiEndpoint3);
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-
-// Execute cURL session and get the response
-$response = curl_exec($ch);
-
-// Close cURL session
-curl_close($ch);
-
-// Decode the JSON response
-$data = json_decode($response, true);
-$allCreators=$data['data'];
-$totalCreators= count($allCreators);
-
+// Fetch data for content creators
+$dataCreators = fetchDataFromAPI($apiEndpointCreators);
+$allCreators = $dataCreators['data'];
+$totalCreators = count($allCreators);
 
 ?>
 
@@ -107,7 +72,7 @@ $totalCreators= count($allCreators);
         <div class="grid grid-cols-3 bg-gray-700 gap-4 align-middle">
             <div class=" w-64 h-40 bg-gray-200 rounded-md shadow-sm p-4">
                 <img src="../../public/images/multiple-users-silhouette.png" class=" w-16" alt="">
-                <h1 class=" text-3xl font-medium"><?php echo $totalUsers?></h1>
+                <h1 class=" text-3xl font-medium"><?php echo $totalUsers ?></h1>
                 <h6>Total Users</h6>
             </div>
             <div class=" w-64 h-40 bg-gray-200 rounded-md shadow-sm p-4">
