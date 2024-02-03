@@ -142,6 +142,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <label for="Drama">Drama</label>
                     </div>
                     <div>
+                        <input type="checkbox" name="genres[]" value="Romance">
+                        <label for="Romance">Romance</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="genres[]" value="Thriller">
+                        <label for="Thriller">Thriller</label>
+                    </div>
+                    <div>
                         <input type="checkbox" name="genres[]" value="Fantasy">
                         <label for="Fantasy">Fantasy</label>
                     </div>
@@ -150,8 +158,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <label for="Horror">Horror</label>
                     </div>
                     <div>
-                        <input type="checkbox" name="genres[]" value="Science Fiction">
-                        <label for="Science Fiction">Sci-Fi</label>
+                        <input type="checkbox" name="genres[]" value="Sci-Fi">
+                        <label for="Sci-Fi">Sci-Fi</label>
                     </div>
                 </div>
             </div>
