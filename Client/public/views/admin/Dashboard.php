@@ -1,8 +1,6 @@
- <?php include_once("../../components/adminAside2.php")  ?>
-
-
+ <?php include_once("../../components/adminAside.php")  ?>
  <!-- Dashboard -->
- <div class="grid grid-cols-3 col-span-5 bg-gray-700 gap-4 align-middle px-32">
+ <div class="grid grid-cols-3 col-span-5 bg-gray-700 gap-4 align-middle px-32 py-12">
      <div class=" w-64 h-40 bg-gray-200 rounded-md shadow-sm p-4">
          <img src="../../public/images/multiple-users-silhouette.png" class=" w-16" alt="">
          <h1 class=" text-3xl font-medium"><?php echo $totalUsers ?></h1>

@@ -1,4 +1,4 @@
-<?php include_once("../../components/adminAside2.php")  ?>
+
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["delete"])) {
     // Get the creator ID from the form data
@@ -42,9 +42,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["delete"])) {
 
 
 ?>
-
+<?php include_once("../../components/adminAside.php")  ?>
 <!-- Delete Creator-->
-<div class=" bg-gray-700 gap-4 col-span-5 align-middle px-8">
+<div class=" bg-gray-700 gap-4 col-span-5 align-middle px-8 flex items-center justify-center">
     <table class="table-auto">
         <thead>
             <tr>
