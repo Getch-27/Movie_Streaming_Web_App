@@ -38,6 +38,7 @@ $totalCreators = count($allCreators);
     <base href="http://localhost/Movie_Streaming_Web_App/client/public/components/adminAside2.php" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../styles.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <title>Document</title>
 </head>
 

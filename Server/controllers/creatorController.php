@@ -13,6 +13,9 @@ class CreatorController extends Creator
     public function creatorRegisterCon($data){
         return $this->Register($data);
     }
+    public function creatorDeleteCon($data){
+        return $this->deleteAccount($data);
+    }
     public function getAllCreatorsCont(){
         return $this->getCreators();
     }

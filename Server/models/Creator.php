@@ -4,6 +4,7 @@ class Creator extends Database
 {
     private $mysqli;
     private $table = "creator";
+    private $id;
     private $username;
     private $password;
     private $email;
@@ -41,9 +42,19 @@ class Creator extends Database
         }
         
     }
-    public function deleteAccount()
+    public function deleteAccount($data)
     {
         // account deletion by admin
+        $this->mysqli = $this->connect();
+        $this->id=$data->id;
+        $query = "DELETE FROM " . $this->table . " WHERE id=" . $this->id;
+        $stmt = $this->mysqli->prepare($query);
+        if ($stmt->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+
     }
     public function getCreators()
     {
