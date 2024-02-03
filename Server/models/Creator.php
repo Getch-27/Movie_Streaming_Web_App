@@ -1,5 +1,5 @@
 <?php
-include_once("../config/Database.php");
+include_once("../../config/Database.php");
 class Creator extends Database
 {
     private $mysqli;
@@ -29,8 +29,16 @@ class Creator extends Database
     {
         // account deletion by admin
     }
-    public function getCreatorInfo()
+    public function getCreators()
     {
         // get all creators by Admin
+        $this->mysqli = $this->connect();
+        
+        $query = "SELECT * FROM " . $this->table ."";
+        $stmt = $this->mysqli->prepare($query);
+        $stmt->execute();
+        //->fetch(PDO::FETCH_ASSOC)
+
+        return $stmt;
     }
 }

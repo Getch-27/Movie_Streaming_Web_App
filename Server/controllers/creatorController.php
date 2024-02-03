@@ -1,5 +1,5 @@
 <?php
-include_once("../models/Creator.php");
+include_once("../../models/Creator.php");
 class CreatorController extends Creator
 {
     private $creator;
@@ -9,5 +9,8 @@ class CreatorController extends Creator
     {
         
         return $this->creator->creatorLogin($data);
+    }
+    public function getAllCreatorsCont(){
+        return $this->getCreators();
     }
 }

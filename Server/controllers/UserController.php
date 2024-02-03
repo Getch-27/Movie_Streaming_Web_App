@@ -19,4 +19,7 @@ class UserController extends User
         $user_id =$id->user_id;
         return $this->movieWathlists($user_id);
     }
+    public function getAllUsersCont(){
+        return $this->getAllUsers();
+    }
 }

@@ -89,4 +89,15 @@ class User extends Database
 
         return $stmt;
     }
+
+    protected function getAllUsers(){
+        $this->mysqli = $this->connect();
+        
+        $query = "SELECT * FROM user";
+        $stmt = $this->mysqli->prepare($query);
+        $stmt->execute();
+        //->fetch(PDO::FETCH_ASSOC)
+
+        return $stmt;
+    }
 }
