@@ -1,8 +1,8 @@
 <?php
-if (isset($_SESSION['user_id'])){
+if (isset($_SESSION['user_id'])) {
     $user_id = $_SESSION['user_id'];
-}else{
-    $user_id= null;
+} else {
+    $user_id = null;
 }
 
 // Determine the current page
@@ -29,7 +29,7 @@ curl_close($ch);
 
 // Decode the JSON response
 $data = json_decode($response, true);
-$years=$data['year_list'];
+$years = $data['year_list'];
 $genres = $data['genre_list'];
 
 // Define menu items
@@ -40,22 +40,22 @@ $menuItems = array(
 
     //genre array
     array('text' => 'Genre', 'url' => '#', 'submenu' => array()),
-  
+
     //year array
     array('text' => 'Year', 'url' => '#', 'submenu' => array())
 );
 $menuItems[] = array('text' => 'About Us', 'url' => 'aboutUs.php');
 // Generate year array and append to the 'Year' submenu
-foreach($genres as $genre){
-  $menuItems[3]['submenu'][] = array(
-    'text' => $genre, 'url' => '../views/search/genre.php?genre='.$genre . ''
-  );
+foreach ($genres as $genre) {
+    $menuItems[3]['submenu'][] = array(
+        'text' => $genre, 'url' => '../views/search/genre.php?genre=' . $genre . ''
+    );
 }
-foreach($years as $year){
-   $menuItems[4]['submenu'][] = array(
+foreach ($years as $year) {
+    $menuItems[4]['submenu'][] = array(
         'text' => $year,
         'url' => "../views/search/year.php?year=$year"
-    ); 
+    );
 }
 ?>
 
@@ -91,6 +91,7 @@ foreach($years as $year){
             }
         }
 
+        /* nav bar */
         nav a {
             color: gainsboro;
             text-decoration: none;
@@ -104,15 +105,17 @@ foreach($years as $year){
 
         .active {
             border-bottom: #4caf50 solid 3px;
-
+            color: #4caf50;
 
             /* font-weight: bold; */
         }
+
 
         /* Add this style for .dropdown */
         .submenu {
             display: none;
             position: absolute;
+            background-color: transparent;
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
             z-index: 1;
         }
@@ -132,18 +135,49 @@ foreach($years as $year){
         .dropdown-content a:hover {
             background-color: #2d3748;
         }
+
+        .animate1 {
+            animation: wel 8s cubic-bezier(0, 0.5, 0.4, 1);
+        }
+
+        @keyframes wel {
+
+            50%,
+            70% {
+
+                opacity: 1;
+            }
+
+            70% {
+                transform: scale(2);
+                opacity: 0;
+            }
+
+            80% {
+                transform: scale(3);
+                opacity: 0;
+            }
+
+            95% {
+                transform: scale(1);
+            }
+
+            100% {
+                transform: scale(1.6);
+            }
+        }
     </style>
 </head>
 
 <body class="font-sans bg-gray-500">
     <!-- Navbar -->
-    <nav class=" bg-gray-800 h-20 flex items-center bg-clip-padding backdrop-filter backdrop-blur-3xl bg-opacity-50 shadow-lg absolute z-50 w-full ">
+    <nav class=" sticky top-0  bg-gray-800 h-20 flex items-center bg-clip-padding backdrop-filter backdrop-blur-3xl bg-opacity-50 shadow-lg  z-50 w-full ">
         <div class="container mx-auto flex justify-between items-center">
             <!-- Logo -->
             <div class="text-2xl font-bold bg-gradient-to-r to-white from-green-700 bg-clip-text text-transparent flex flex-row gap-2"><img class=" h-10" src="../images/play.png"></img> <span>Streamly</span></span> </div>
 
             <!-- Mobile Sidebar -->
-            <div id="mobile-sidebar" class="sidebar bg-gradient-to-br from-green-700 to-teal-900 fixed inset-0  z-[999] overflow-hidden transition-transform ease-in-out lg:hidden">
+            <div id="mobile-sidebar" class="sidebar bg-gradient-to-t from-teal-900 to-teal-700 fixed inset-0  z-[999] overflow-hidden transition-transform ease-in-out md:hidden">
                 <div class="flex justify-end p-4">
                     <button id="mobile-menu-close" class="text-white">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -257,8 +291,8 @@ foreach($years as $year){
             </div>
 
             <!-- Menu Button -->
-            <div class="block lg:hidden">
-                <button id="mobile-menu-toggle" class="text-white focus:outline-none">
+            <div class="block lg:hidden" id="mobile-menu-toggle">
+                <button class="text-white focus:outline-none">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
                     </svg>

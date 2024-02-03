@@ -18,118 +18,8 @@ curl_close($ch);
 $data = json_decode($response, true);
 $movie_data = $data['data'];
 ?>
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"> -->
-    <link rel="stylesheet" href="../styles.css">
-
-    <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
 
-    <!-- OwlCarousel CSS and JS files -->
-    <link rel="stylesheet" href="./lib/owlcarousel/assets/owl.carousel.min.css">
-    <link rel="stylesheet" href="./lib/owlcarousel/assets/owl.theme.default.min.css">
-    <script src="../lib/owlcarousel/owl.carousel.min.js"></script>
-
-    <style>
-        @media (max-width: 768px) {
-            .sidebar {
-                transform: translateX(-100%);
-                transition: transform 0.3s ease-in-out;
-            }
-
-            .sidebar.open {
-                transform: translateX(0);
-            }
-        }
-
-        nav a {
-            color: gainsboro;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        nav a:hover {
-            color: #4caf50;
-            border-bottom: #4caf50 solid 1px;
-        }
-
-        .active {
-            color: #4caf50;
-
-
-            /* font-weight: bold; */
-        }
-
-
-
-
-
-
-        /* Add this style for .dropdown */
-        .submenu {
-            display: none;
-            position: absolute;
-            background-color: #1a202c;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-            z-index: 1;
-        }
-
-        .dropdown:hover .submenu {
-            display: block;
-        }
-
-        .dropdown-content a {
-            display: block;
-            color: #ffffff;
-            padding: 12px;
-            text-decoration: none;
-            transition: background-color 0.3s;
-        }
-
-        .dropdown-content a:hover {
-            background-color: #2d3748;
-        }
-
-        .animate1 {
-            animation: wel 8s cubic-bezier(0, 0.5, 0.4, 1);
-        }
-
-        @keyframes wel {
-
-            50%,
-            70% {
-
-                opacity: 1;
-            }
-
-            70% {
-                transform: scale(2);
-                opacity: 0;
-            }
-
-            80% {
-                transform: scale(3);
-                opacity: 0;
-            }
-
-            95% {
-                transform: scale(1);
-            }
-            100% {
-                transform: scale(1.6);
-            }
-        }
-    </style>
-
-</head>
-
-<body>
     <!-- hero section start-->
     <?php session_start();
     isset($_SESSION['user_id']) ? $user_id = $_SESSION['user_id'] : null; ?>
@@ -250,22 +140,7 @@ $movie_data = $data['data'];
         // Start observing the target section
         observer.observe(targetSection);
 
-        // Initial display
 
-
-
-
-
-
-
-        //menu toggle button
-        document.getElementById('mobile-menu-toggle').addEventListener('click', function() {
-            document.getElementById('mobile-sidebar').classList.add('open');
-        });
-
-        document.getElementById('mobile-menu-close').addEventListener('click', function() {
-            document.getElementById('mobile-sidebar').classList.remove('open');
-        });
         //remove event passive
         $.event.special.touchstart = {
             setup: function(_, ns, handle) {
