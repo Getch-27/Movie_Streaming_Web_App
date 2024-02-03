@@ -21,9 +21,25 @@ class Creator extends Database
 
         return $stmt;  // Return user data or null if not found
     }
-    public function register()
-    {
-        /// creator registeration by admin
+    
+    /// creator registeration by admin
+    public function Register($data)
+    {   
+        $this->mysqli = $this->connect();
+        $this->username = $data->username;
+        $this->password = $data->password;
+        $this->email = $data->email;
+        $query = "INSERT INTO creator (username, password,email) VALUES (:username, :password, :email)";
+        $regStmt = $this->mysqli->prepare($query);
+        $regStmt->bindParam(':username', $this->username);
+        $regStmt->bindParam(':password', $this->password);
+        $regStmt->bindParam(':email', $this->email);
+        if ($regStmt->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+        
     }
     public function deleteAccount()
     {

@@ -10,6 +10,9 @@ class CreatorController extends Creator
         
         return $this->creator->creatorLogin($data);
     }
+    public function creatorRegisterCon($data){
+        return $this->Register($data);
+    }
     public function getAllCreatorsCont(){
         return $this->getCreators();
     }
