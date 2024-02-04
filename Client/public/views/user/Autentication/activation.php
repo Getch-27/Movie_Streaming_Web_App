@@ -93,7 +93,7 @@ isset($_SESSION['user_id']) ? $user_id = $_SESSION['user_id'] : null;
                 <span class="mb-1 text-sm font-semibold text-gray-900 dark:text-white">Activation Code Sent</span>
                 <div class="mb-2 text-sm font-normal">Activation code is sent to your Email:</div>
                 <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" class="grid grid-cols-1 gap-2 justify-items-center content-center">
-                    <input type="text" name="activation" id="" class="flex items-center h-10 px-2 w-64 bg-gray-200 mt-2 rounded focus:outline-none focus:ring-2">
+                    <input required type="text" name="activation" id="" class="flex items-center h-10 px-2 w-64 bg-gray-200 mt-2 rounded focus:outline-none focus:ring-2">
                     <div class=" w-20 ">
                         <button type="submit" class=" inline-flex justify-center w-full px-4 py-2 text-xs font-medium text-center text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-500 dark:hover:bg-blue-600 dark:focus:ring-blue-800">Activate</button>
                     </div>
