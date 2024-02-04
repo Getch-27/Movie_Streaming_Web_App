@@ -45,13 +45,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["delete"])) {
 <?php include_once("../../components/adminAside.php")  ?>
 <!-- Delete Creator-->
 <div class=" bg-gray-700 gap-4 col-span-5 align-middle px-8 flex items-center justify-center">
-    <table class="table-auto">
+    <table class="table-auto bg-white rounded">
         <thead>
             <tr>
-                <th class="px-4 py-2">Creator ID</th>
-                <th class="px-4 py-2">Name</th>
-                <th class="px-4 py-2">Email</th>
-                <th class="px-4 py-2">Delete</th>
+                <th class="border px-4 py-2">Creator ID</th>
+                <th class="border px-4 py-2">Name</th>
+                <th class="border px-4 py-2">Email</th>
+                <th class="border px-4 py-2">Delete</th>
             </tr>
         </thead>
         <tbody>
