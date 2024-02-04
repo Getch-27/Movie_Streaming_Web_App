@@ -1,8 +1,11 @@
 <?php
+$favoriteLink ="";
 if (isset($_SESSION['user_id'])) {
     $user_id = $_SESSION['user_id'];
+    $favoriteLink = "../views/user/watchlist.php?id=$user_id";
 } else {
     $user_id = null;
+    $favoriteLink = "../views/user/Autentication/login.php";
 }
 
 // Determine the current page
@@ -36,7 +39,7 @@ $genres = $data['genre_list'];
 $menuItems = array(
     array('text' => 'Home', 'url' => '../index.php'),
     array('text' => 'Movies', 'url' => '../views/search/movies.php'),
-    array('text' => 'Favorites', 'url' => "../views/user/watchlist.php?id=$user_id"),
+    array('text' => 'Favorites', 'url' => "$favoriteLink"),
 
     //genre array
     array('text' => 'Genre', 'url' => '#', 'submenu' => array()),

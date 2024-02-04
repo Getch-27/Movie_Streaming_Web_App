@@ -108,13 +108,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 }
 ?>
 <?php include_once("../../../components/header.php"); ?>
-<div class="flex flex-col items-center justify-center w-screen h-screen bg-gradient-to-tl from-green-900 to-gray-900 text-gray-700">
+<div class="flex flex-col items-center justify-center py-24 w-full bg-gradient-to-tl from-green-900 to-gray-900 text-gray-700">
     <div class=" flex w-2/3">
         <form action="<?php $_SERVER['PHP_SELF'] ?>" class=" bg-white rounded-l shadow-lg p-12 w-5/12" method="POST">
             <span class="text-red-500 w-48 absolute -mt-6 h-1"><?php echo $emptyError; ?></span>
             <span class="text-red-500 w-64 absolute -mt-6 h-1"><?php echo $filds ? $emailError : ""; ?></span>
             <span class="text-red-500 w-64 absolute -mt-6 h-1"><?php echo $filds ? $passwordError : ""; ?></span>
-            <span class="text-red-500 w-full absolute -mt-8 pb-4 h-1"><?php echo $filds && empty($passwordError)  ? $confirmPasswordError : ""; ?></span>
+            <span class="text-red-500 w-64 absolute -mt-8 pb-4 h-1"><?php echo $filds && empty($passwordError)  ? $confirmPasswordError : ""; ?></span>
 
             <label class="font-semibold text-xs" for="emailField">Email</label>
             <input name="email" value="<?php echo htmlspecialchars($email); ?>" class=" border-gray-500 focus:bg-gray-300 border flex items-center h-10 px-4 w-48 bg-gray-200 mt-2 rounded focus:outline-none focus:ring-2" type="email">
@@ -135,11 +135,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <div class="bg-gray-200 w-3/5 rounded-r p-6">
             <h1 class=" text-3xl pt-16 px-4">Welcome to our Website</h1>
             <p class="px-4 pt-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-            <p class=" mt-24 px-4">Alrady have an account? <a class=" font-semibold text-green-700 hover:text-green-900" href="../views/user/login.php">Login in</a></p>
+            <p class=" mt-24 px-4">Alrady have an account? <a class=" font-semibold text-green-700 hover:text-green-900" href="../views/user/Autentication/login.php">Login in</a></p>
         </div>
     </div>
 
 </div>
 <!-- Component End  -->
 
-<?php include_once("../../components/footer.php"); ?>
+<?php include_once("../../../components/footer.php"); ?>

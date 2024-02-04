@@ -96,7 +96,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <div class="bg-gray-200 w-3/5 rounded-l">
             <h1 class=" text-3xl pt-16 px-4">Welcome to our Website</h1>
             <p class="px-4 pt-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-            <p class=" mt-24 px-4">Don't have an account? <a class=" font-semibold text-green-700 hover:text-green-900" href="../views/user/register.php">Sign in</a></p>
+            <p class=" mt-24 px-4">Don't have an account? <a class=" font-semibold text-green-700 hover:text-green-900" href="../views/user/Autentication/register.php">Sign in</a></p>
         </div>
 
         <form action="<?php echo $_SERVER['PHP_SELF']; ?>" class=" w-5/12 flex flex-col bg-white rounded-r shadow-lg p-12" method="POST">
