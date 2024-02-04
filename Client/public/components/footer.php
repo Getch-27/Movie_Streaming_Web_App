@@ -55,6 +55,22 @@
             }
         );
     });
+    // window.addEventListener('scroll', function() {
+    //         let scrollPosition = window.scrollY;
+
+    //         // Map slowScroll to the interval [1, 2]
+    //         console.log(scrollPosition);
+    //         if(scrollPosition >= 78){
+    //             document.getElementById('navigation').classList.remove('absolute');
+    //             document.getElementById('navigation').classList.add('sticky');
+            
+    //         }else if(scrollPosition <78){
+    //             document.getElementById('navigation').classList.remove('sticky');
+    //             document.getElementById('navigation').classList.add('absolute');
+    //         }
+    //         // Apply the slow scroll to the specific section
+            
+    //     });
 </script>
 
 </body>

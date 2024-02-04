@@ -171,7 +171,7 @@ foreach ($years as $year) {
 
 <body class="font-sans bg-gray-500">
     <!-- Navbar -->
-    <nav class=" sticky top-0  bg-gray-800 h-20 flex items-center bg-clip-padding backdrop-filter backdrop-blur-3xl bg-opacity-50 shadow-lg  z-50 w-full ">
+    <nav id="navigation" class="absolute top-0 bg-gray-800 h-20 flex items-center bg-clip-padding backdrop-filter backdrop-blur-3xl bg-opacity-50 shadow-lg  z-50 w-full ">
         <div class="container mx-auto flex justify-between items-center">
             <!-- Logo -->
             <div class="text-2xl font-bold bg-gradient-to-r to-white from-green-700 bg-clip-text text-transparent flex flex-row gap-2"><img class=" h-10" src="../images/play.png"></img> <span>Streamly</span></span> </div>

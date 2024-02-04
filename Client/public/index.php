@@ -24,7 +24,7 @@ $movie_data = $data['data'];
     <?php session_start();
     isset($_SESSION['user_id']) ? $user_id = $_SESSION['user_id'] : null; ?>
     <?php include_once("./components/header.php"); ?>
-    <div class="owl-carousel shadow-lg relative ">
+    <div class="owl-carousel shadow-lg relative">
         <?php foreach ($movie_data as $movie) : ?>
             <div class="relative h-screen bg-cover bg-center " style="background-image: url('http://localhost/Movie_Streaming_Web_App/Server/api/movie/<?php echo $movie['poster_url'] ?>');">
                 <div class="absolute inset-0 bg-gradient-to-r from-black to-transparent opacity-75 flex flex-col items-start justify-center h-screen">
