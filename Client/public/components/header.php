@@ -283,10 +283,10 @@ foreach ($years as $year) {
             </form>
             <div class="hidden lg:flex space-x-4">
                 <?php if (isset($_SESSION['is_user_logged_in'])) : ?>
-                    <a href="../../public/views/user/logout.php" class=" px-4 py-2 bg-transparent text-white font-bold rounded-2xl border border-green-600 w-24">Logout</a>
+                    <a href="../../public/views/user/Autentication/logout.php" class=" px-4 py-2 bg-transparent text-white font-bold rounded-2xl border border-green-600 w-24">Logout</a>
                 <?php else : ?>
-                    <a href="../../public/views/user/login.php" class=" px-4 py-2 bg-transparent text-white font-bold rounded-2xl border border-green-600 w-24">Login</a>
-                    <a href="../../public/views/user/register.php" class=" px-4 py-2 bg-transparent text-white font-bold rounded-2xl border border-green-600 w-24">Signup</a>
+                    <a href="../../public/views/user/Autentication/login.php" class=" px-4 py-2 bg-transparent text-white font-bold rounded-2xl border border-green-600 w-24">Login</a>
+                    <a href="../../public/views/user/Autentication/register.php" class=" px-4 py-2 bg-transparent text-white font-bold rounded-2xl border border-green-600 w-24">Signup</a>
                 <?php endif; ?>
             </div>
 

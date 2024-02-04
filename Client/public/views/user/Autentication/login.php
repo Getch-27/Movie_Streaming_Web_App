@@ -82,14 +82,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             // Regenerate session ID for security
             session_regenerate_id(true);
 
-            header('location:../../index.php');
+            header('location:../../../index.php');
             exit();
         }
     }
 }
 ?>
 
-<?php include_once("../../components/header.php") ?>
+<?php include_once("../../../components/header.php") ?>
 <div class="flex flex-col items-center justify-center w-full h-screen bg-gradient-to-tl from-green-900 to-gray-900 text-gray-700">
     <!-- Component Start -->
     <div class=" flex w-1/2">
@@ -113,4 +113,4 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     <!-- Component End  -->
 </div>
-<?php include_once("../../components/footer.php") ?>
+<?php include_once("../../../components/footer.php") ?>
