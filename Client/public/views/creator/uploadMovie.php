@@ -80,40 +80,35 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 
 <body class="bg-gradient-to-tl from-green-900 to-gray-900">
-    <form action="<?php $_SERVER['PHP_SELF'] ?>" method="POST" enctype="multipart/form-data" class=" max-w-xl p-6 mx-auto bg-gray-400">
-        <div class="grid grid-cols-5 gap-3">
-            <div class=" col-span-3">
-                <label for="title" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Title</label>
-                <input type="text" name="title" aria-describedby="helper-text-explanation" class="bg-gray-50 border p-2 border-blue-500 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Avatar">
-
-            </div>
-            <div>
-                <label for="rating" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Rating</label>
-                <input type="text" name="rating" aria-describedby="helper-text-explanation" class="bg-gray-50 border p-2 border-blue-500 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="8.1">
-
-            </div>
-            <div>
-                <label for="released_year" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Released Year</label>
-                <input type="text" name="released_year" aria-describedby="helper-text-explanation" class="bg-gray-50 border p-2 border-blue-500 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="2024">
-
-            </div>
-            <div>
-                <label for="duration" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Duration</label>
-                <input type="text" name="duration" aria-describedby="helper-text-explanation" class="bg-gray-50 border p-2 border-blue-500 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="2h 45m">
-
-            </div>
-            <div class=" col-span-3">
-                <label for="Trailer" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Trailer Link</label>
-                <input type="text" name="trailer" aria-describedby="helper-text-explanation" class="bg-gray-50 border p-2 border-blue-500 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="ex3C1-5Dhb8?si=Rcw8kl6DtOaiwz37">
-
-            </div>
-
-
+<form action="<?php $_SERVER['PHP_SELF'] ?>" method="POST" enctype="multipart/form-data" class="max-w-xl p-6 mx-auto bg-gray-400">
+    <div class="grid grid-cols-5 gap-3">
+        <div class="col-span-3">
+            <label for="title" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Title</label>
+            <input type="text" name="title" aria-describedby="helper-text-explanation" class="bg-gray-50 border p-2 border-blue-500 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Avatar" required>
         </div>
-        <label for="description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Description</label>
-        <textarea name="description" type="text" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border p-2 border-blue-500 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Write a description..."></textarea>
-        <!-- #region -->
-        <div class="dropdown w-4">
+        <div>
+            <label for="rating" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Rating</label>
+            <input type="text" name="rating" aria-describedby="helper-text-explanation" class="bg-gray-50 border p-2 border-blue-500 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="8.1" required>
+        </div>
+        <div>
+            <label for="released_year" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Released Year</label>
+            <input type="text" name="released_year" aria-describedby="helper-text-explanation" class="bg-gray-50 border p-2 border-blue-500 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="2024" required>
+        </div>
+        <div>
+            <label for="duration" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Duration</label>
+            <input type="text" name="duration" aria-describedby="helper-text-explanation" class="bg-gray-50 border p-2 border-blue-500 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="2h 45m" required>
+        </div>
+        <div class="col-span-3">
+            <label for="Trailer" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Trailer Link</label>
+            <input type="text" name="trailer" aria-describedby="helper-text-explanation" class="bg-gray-50 border p-2 border-blue-500 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="ex3C1-5Dhb8?si=Rcw8kl6DtOaiwz37" required>
+        </div>
+    </div>
+    
+    <label for="description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Description</label>
+    <textarea name="description" type="text" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border p-2 border-blue-500 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Write a description..." required></textarea>
+
+    <!-- #region -->
+    <div class="dropdown w-4">
             <h1 clsss="bg-gray-900 text-lg">Genre</h1>
             <div class="submenu dropdown-content pt-1 bg-transparent">
                 <div class=" bg-gray-900 p-3 text-white gap-2 grid grid-cols-3 mt-0 bg-opacity-75 dropdown-content rounded-lg shadow-lg">
@@ -165,25 +160,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
         </div>
 
+    <label for="poster" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Poster</label>
+    <input class="block w-full mb-5 text-sm text-gray-900 border border-gray-900 rounded-lg cursor-pointer focus:outline-none dark:placeholder-gray-400" type="file" name="poster" accept="image/*" required>
 
+    <label for="video" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Video</label>
+    <input class="block w-full mb-5 text-sm text-gray-900 border border-gray-900 rounded-lg cursor-pointer focus:outline-none dark:placeholder-gray-400" type="file" name="video" accept="video/*" required>
 
+    <br>
+    <input type="submit" value="Upload" name="submit" class="bg-gray-900 text-center p-2 w-full rounded-md shadow-md text-base font-semibold text-white">
+</form>
 
-        <!-- <div class="dropdown ">
-            <h1 clsss="dropbtn w-4 bg-gray-900 text-lg ">Genre</h1>
-            <div class="submenu bg-gray-900 w-64  grid grid-cols-4 mt-0 bg-opacity-75 dropdown-content rounded-lg shadow-lg">
-               
-            </div>
-        </div> -->
-
-
-
-        <label for="poster" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Poster</label>
-        <input class="block w-full mb-5 text-sm text-gray-900 border border-gray-900 rounded-lg cursor-pointer focus:outline-none  dark:placeholder-gray-400" type="file" name="poster" accept="image/*">
-        <label for="video" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Video</label>
-        <input class="block w-full mb-5 text-sm text-gray-900 border border-gray-900 rounded-lg cursor-pointer focus:outline-none  dark:placeholder-gray-400" type="file" name="video" accept="video/*">
-        <br>
-        <input type="submit" value="Upload" name="submit" class=" bg-gray-900 text-center p-2 w-full rounded-md shadow-md text-base font-semibold text-white">
-    </form>
 </body>
 
 </html>
