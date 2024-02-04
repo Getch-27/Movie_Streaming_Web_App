@@ -88,7 +88,7 @@ include_once("../../components/header.php"); ?>
         <p class=" col-span-3 text-gray-400"> <?php echo "Released Year : " . $movie_data['released_year'] ?></p>
         <div class=" col-span-3 grid grid-cols-2 h-10">
             <button type="button" id="addToFavoriteBtn" data-movie-id=<?php echo $movie_data['movie_id'] ?> class="mt-4 px-2 h-12 py-2 bg-transparent text-white font-bold rounded-2xl border border-green-600 w-24">Favorite</button>
-            <a href="http://" class="mt-4 px-4 py-2 bg-transparent text-white font-bold rounded-2xl border border-green-600 w-24">Trailer</a>
+            <a href="../views/player/movieTrailer.php?trailer=<?php echo urlencode($movie_data['trailer']); ?>" class="mt-4 px-4 py-2 bg-transparent text-white font-bold rounded-2xl border border-green-600 w-24">Trailer</a>
         </div>
     </div>
 </div>

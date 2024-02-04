@@ -27,6 +27,7 @@ if ($data) {
                 'duration' => $duration,
                 'description' => $description,
                 'video_url' => $video_url,
+                'trailer' => $trailer,
                 'poster_url' => $poster_url,
                 'genre_names' => $genre_names
             );
